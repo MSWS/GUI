@@ -1,0 +1,18 @@
+Shops:
+  DefaultShop:
+    Name: 'Default Shop'
+    Pages:
+      MainPage:
+        Weaponry:
+          Icon: 'DIAMOND_SWORD'
+          Name: '&cWeaponry'
+          Function:
+            Type: 'GoToPage'
+            Value: 'Weaponry'
+      Weaponry:
+        sword:
+          Icon: 'DIAMOND_SWORD'
+          Name: '&cDiamond Sword'
+          Function:
+            Type: 'BUY'
+            Value: 50

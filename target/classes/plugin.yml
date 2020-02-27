@@ -1,0 +1,7 @@
+name: Shop
+main: xyz.msws.shop.Shop
+version: 1.0.0
+author: MSWS
+commands:
+  shop:
+    usage: /<command>
