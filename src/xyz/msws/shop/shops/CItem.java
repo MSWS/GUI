@@ -47,15 +47,15 @@ public class CItem implements ConfigurationSerializable {
 			values.add(e);
 
 		Material mat = Material.valueOf(values.get(0));
-
 		int amo = (values.size() > 1) ? (values.get(1).equals("") ? 1 : Integer.parseInt(values.get(1))) : 1;
 		int damage = (values.size() > 2) ? (values.get(2).equals("") ? 0 : Integer.parseInt(values.get(2))) : 0;
+
 		item = new ItemStack(mat);
-		amount(amo);
 		meta = item.getItemMeta();
+		amount(amo);
 		if (damage != 0)
 			damage(damage);
-		if (values.size() >= 3) {
+		if (values.size() > 3) {
 			String name = values.get(3);
 			if (!name.isEmpty())
 				name(name);
@@ -81,7 +81,6 @@ public class CItem implements ConfigurationSerializable {
 				enchantment(ench, Integer.parseInt(values.get(i).substring(values.get(i).indexOf("=") + 1)));
 			}
 		}
-		this.item = new ItemStack(mat);
 	}
 
 	public String getName() {
@@ -173,7 +172,7 @@ public class CItem implements ConfigurationSerializable {
 	}
 
 	public CItem itemFlag(ItemFlag... flag) {
-		item.addItemFlags(flag);
+		meta.addItemFlags(flag);
 		return this;
 	}
 

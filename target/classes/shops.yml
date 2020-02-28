@@ -9,6 +9,8 @@ DefaultShop:
       Weapons:
         Icon: DIAMOND_SWORD
         Name: '&c&lWeapons'
+        ItemFlags:
+        - 'HIDE_ATTRIBUTES'
         Slot: 10
         ItemFlags:
         - HIDE_ATTRIBUTES
@@ -94,6 +96,8 @@ DefaultShop:
         Lore:
         - ''
         - '&aCost: &e60 Gold'
+        ItemFlags:
+        - 'HIDE_ATTRIBUTES'
         Slot: 0
         Functions:
           buy:
@@ -103,10 +107,12 @@ DefaultShop:
             - DIAMOND_SWORD
       isword:
         Icon: IRON_SWORD
-        Name: '&6Iron Sword'
+        Name: '&7Iron Sword'
         Lore:
         - ''
         - '&aCost: &e30 Gold'
+        ItemFlags:
+        - 'HIDE_ATTRIBUTES'
         Slot: 9
         Functions:
           buy:
@@ -114,13 +120,24 @@ DefaultShop:
             Value:
             - 30
             - IRON_SWORD
+      gsword:
+        Icon: GOLDEN_SWORD
+        Name: '&6Golden Sword'
+        Lore:
+        - ''
+        - '&aCost: &e30 Gold'
+        ItemFlags:
+        - 'HIDE_ATTRIBUTES'
+        Slot: 18
       ssword:
         Icon: STONE_SWORD
         Name: '&7Stone Sword'
         Lore:
         - ''
         - '&aCost: &e10 Gold'
-        Slot: 18
+        ItemFlags:
+        - 'HIDE_ATTRIBUTES'
+        Slot: 27
         Functions:
           buy:
             Type: BUY
@@ -133,7 +150,9 @@ DefaultShop:
         Lore:
         - ''
         - '&aCost: &e5 Gold'
-        Slot: 27
+        ItemFlags:
+        - 'HIDE_ATTRIBUTES'
+        Slot: 36
         Functions:
           buy:
             Type: BUY
@@ -141,12 +160,14 @@ DefaultShop:
             - 5
             - STONE_SWORD
       darmor:
-        Icon: DIAMOND_CHESTPLATE
+        Icon: DIAMOND_HELMET
         Name: '&bFull Diamond Armor'
         Slot: 1
         Lore:
         - ''
         - '&aCost: &e500 Gold'
+        ItemFlags:
+        - 'HIDE_ATTRIBUTES'
         Functions:
           buy:
             Type: BUY
@@ -156,3 +177,194 @@ DefaultShop:
             - DIAMOND_CHESTPLATE
             - DIAMOND_LEGGINGS
             - DIAMOND_BOOTS
+      iarmor:
+        Icon: IRON_HELMET
+        Name: '&7Full Iron Armor'
+        Slot: 2
+        Lore:
+        - ''
+        - '&aCost: &e400 Gold'
+        ItemFlags:
+        - 'HIDE_ATTRIBUTES'
+        Functions:
+          buy:
+            Type: BUY
+            Value:
+            - 400
+            - IRON_HELMET
+            - IRON_CHESTPLATE
+            - IRON_LEGGINGS
+            - IRON_BOOTS
+      garmor:
+        Icon: GOLDEN_HELMET
+        Name: '&6Full Gold Armor'
+        ItemFlags:
+        - 'HIDE_ATTRIBUTES'
+        Slot: 3
+        Lore:
+        - ''
+        - '&aCost: &e400 Gold'
+        Functions:
+          buy:
+            Type: BUY
+            Value:
+            - 400
+            - GOLDEN_HELMET
+            - GOLDEN_CHESTPLATE
+            - GOLDEN_LEGGINGS
+            - GOLDEN_BOOTS
+      larmor:
+        Icon: LEATHER_HELMET
+        Name: '&8Full Leather Armor'
+        Slot: 4
+        Lore:
+        - ''
+        - '&aCost: &e300 Gold'
+        ItemFlags:
+        - 'HIDE_ATTRIBUTES'
+        Functions:
+          buy:
+            Type: BUY
+            Value:
+            - 300
+            - LEATHER_HELMET
+            - LEATHER_CHESTPLATE
+            - LEATHER_LEGGINGS
+            - LEATHER_BOOTS
+      bow:
+        Icon: BOW
+        Slot: 5
+        Lore:
+        - ''
+        - '&aCost: &e35 Gold'
+        Functions:
+          buy:
+            Type: BUY
+            Value:
+            - 35
+            - BOW
+      arrow:
+        Icon: ARROW
+        Amount: 16
+        Slot: 6
+        Lore:
+        - ''
+        - '&aCost: &e25 Gold'
+        Functions:
+          buy:
+            Type: BUY
+            Value:
+            - 25
+            - ARROW:16
+      dhelmet:
+        Icon: DIAMOND_HELMET
+        Slot: 10
+        Lore:
+        - ''
+        - '&aCost: &e75 Gold'
+        ItemFlags:
+        - 'HIDE_ATTRIBUTES'
+        Functions:
+          buy:
+            Type: BUY
+            Value:
+            - 75
+            - DIAMOND_HELMET
+      dchest:
+        Icon: DIAMOND_CHESTPLATE
+        Slot: 19
+        Lore:
+        - ''
+        - '&aCost: &e200 Gold'
+        ItemFlags:
+        - 'HIDE_ATTRIBUTES'
+        Functions:
+          buy:
+            Type: BUY
+            Value:
+            - 200
+            - DIAMOND_CHESTPLATE
+      dlegs:
+        Icon: DIAMOND_LEGGINGS
+        Slot: 28
+        Lore:
+        - ''
+        - '&aCost: &e150 Gold'
+        ItemFlags:
+        - 'HIDE_ATTRIBUTES'
+        Functions:
+          buy:
+            Type: BUY
+            Value:
+            - 150
+            - DIAMOND_LEGGINGS
+      dboots:
+        Icon: DIAMOND_BOOTS
+        Slot: 37
+        Lore:
+        - ''
+        - '&aCost: &e75 Gold'
+        ItemFlags:
+        - 'HIDE_ATTRIBUTES'
+        Functions:
+          buy:
+            Type: BUY
+            Value:
+            - 75
+            - DIAMOND_BOOTS
+      ihelmet:
+        Icon: IRON_HELMET
+        Slot: 11
+        Lore:
+        - ''
+        - '&aCost: &e50 Gold'
+        ItemFlags:
+        - 'HIDE_ATTRIBUTES'
+        Functions:
+          buy:
+            Type: BUY
+            Value:
+            - 50
+            - IRON_HELMET
+      ichest:
+        Icon: IRON_CHESTPLATE
+        Slot: 20
+        Lore:
+        - ''
+        - '&aCost: &e180 Gold'
+        ItemFlags:
+        - 'HIDE_ATTRIBUTES'
+        Functions:
+          buy:
+            Type: BUY
+            Value:
+            - 180
+            - IRON_CHESTPLATE
+      ilegs:
+        Icon: IRON_LEGGINGS
+        Slot: 29
+        Lore:
+        - ''
+        - '&aCost: &e120 Gold'
+        ItemFlags:
+        - 'HIDE_ATTRIBUTES'
+        Functions:
+          buy:
+            Type: BUY
+            Value:
+            - 120
+            - IRON_LEGGINGS
+      iboots:
+        Icon: IRON_BOOTS
+        Slot: 38
+        Lore:
+        - ''
+        - '&aCost: &e50 Gold'
+        Functions:
+          buy:
+            Type: BUY
+            Value:
+            - 50
+            - IRON_BOOTS
+        ItemFlags:
+        - 'HIDE_ATTRIBUTES'

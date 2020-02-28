@@ -13,8 +13,6 @@ import java.util.Map.Entry;
 import org.bukkit.Sound;
 import org.bukkit.event.inventory.InventoryClickEvent;
 
-import xyz.msws.shop.utils.MSG;
-
 public interface GUIFunction {
 	enum Type {
 		BUY(BuyFunction.class), SELL(null), COMMAND(null), OPEN_GUI(null), CLOSE(null), PLAYSOUND(SoundFunction.class),
@@ -69,7 +67,6 @@ public interface GUIFunction {
 				}
 				if (items.isEmpty())
 					return (T) constructor.newInstance(params);
-				MSG.log("Item array size: " + items.size());
 				params[1] = items.toArray(new CItem[(items.size())]);
 				return (T) constructor.newInstance(params);
 			} catch (InstantiationException | IllegalAccessException | IllegalArgumentException

@@ -16,10 +16,6 @@ public class BuyFunction implements GUIFunction {
 	public BuyFunction(Number value, CItem... items) {
 		cost = value.doubleValue();
 		this.items = items;
-		MSG.log("Created new buy function with items:");
-		for (CItem i : items) {
-			MSG.log(i.build().getType() + "");
-		}
 	}
 
 	@Override
