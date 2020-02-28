@@ -11,11 +11,15 @@ public class BuyFunction implements GUIFunction {
 
 	private double cost = 0;
 
-	private CItem item;
+	private CItem[] items;
 
-	public BuyFunction(Number value, CItem item) {
+	public BuyFunction(Number value, CItem... items) {
 		cost = value.doubleValue();
-		this.item = item;
+		this.items = items;
+		MSG.log("Created new buy function with items:");
+		for (CItem i : items) {
+			MSG.log(i.build().getType() + "");
+		}
 	}
 
 	@Override
@@ -29,9 +33,10 @@ public class BuyFunction implements GUIFunction {
 			return;
 		}
 
-		MSG.tell(player, "Shop", "You successfully purchased " + item.getName());
+		MSG.tell(player, "Shop", MSG.SUCCESS + "Successfully purchased");
 		player.playSound(player.getLocation(), Sound.ENTITY_ITEM_PICKUP, 2, 1);
 		Eco.deduct(player.getInventory(), cost);
-		player.getInventory().addItem(item.build());
+		for (CItem item : items)
+			player.getInventory().addItem(item.build());
 	}
 }

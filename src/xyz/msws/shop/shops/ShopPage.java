@@ -68,8 +68,9 @@ public class ShopPage implements Listener {
 					Object val = fValues.get("Value");
 					GUIFunction function;
 					if (val instanceof ArrayList<?>) {
-						function = Type.valueOf((String) fValues.get("Type"))
-								.createFunction(((ArrayList<?>) val).toArray());
+						ArrayList<?> ar = (ArrayList<?>) val;
+						String type = (String) fValues.get("Type");
+						function = Type.valueOf(type).createFunction(ar.toArray());
 					} else {
 						function = Type.valueOf((String) fValues.get("Type")).createFunction(val);
 					}

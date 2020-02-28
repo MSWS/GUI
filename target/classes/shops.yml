@@ -86,31 +86,73 @@ DefaultShop:
       Size: 54
       Name: '&c&lWeapons'
       BACKGROUND:
-        Icon: 'BLUE_STAINED_GLASS_PANE'
+        Icon: BLUE_STAINED_GLASS_PANE
         Name: ''
       dsword:
         Icon: DIAMOND_SWORD
         Name: '&cDiamond Sword'
         Lore:
         - ''
-        - '&aCost: &e13 Gold'
+        - '&aCost: &e60 Gold'
         Slot: 0
         Functions:
           buy:
             Type: BUY
             Value:
-            - '13'
+            - 60
             - DIAMOND_SWORD
       isword:
         Icon: IRON_SWORD
         Name: '&6Iron Sword'
         Lore:
         - ''
-        - '&aCost: &e10 Gold'
+        - '&aCost: &e30 Gold'
         Slot: 9
         Functions:
           buy:
             Type: BUY
             Value:
-            - 10
+            - 30
             - IRON_SWORD
+      ssword:
+        Icon: STONE_SWORD
+        Name: '&7Stone Sword'
+        Lore:
+        - ''
+        - '&aCost: &e10 Gold'
+        Slot: 18
+        Functions:
+          buy:
+            Type: BUY
+            Value:
+            - 10
+            - STONE_SWORD
+      wsword:
+        Icon: WOODEN_SWORD
+        Name: '&8Wood Sword'
+        Lore:
+        - ''
+        - '&aCost: &e5 Gold'
+        Slot: 27
+        Functions:
+          buy:
+            Type: BUY
+            Value:
+            - 5
+            - STONE_SWORD
+      darmor:
+        Icon: DIAMOND_CHESTPLATE
+        Name: '&bFull Diamond Armor'
+        Slot: 1
+        Lore:
+        - ''
+        - '&aCost: &e500 Gold'
+        Functions:
+          buy:
+            Type: BUY
+            Value:
+            - 500
+            - DIAMOND_HELMET
+            - DIAMOND_CHESTPLATE
+            - DIAMOND_LEGGINGS
+            - DIAMOND_BOOTS
