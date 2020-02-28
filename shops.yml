@@ -1,18 +1,96 @@
-Shops:
-  DefaultShop:
-    Name: 'Default Shop'
-    Pages:
-      MainPage:
-        Weaponry:
-          Icon: 'DIAMOND_SWORD'
-          Name: '&cWeaponry'
-          Function:
-            Type: 'GoToPage'
-            Value: 'Weaponry'
-      Weaponry:
-        sword:
-          Icon: 'DIAMOND_SWORD'
-          Name: '&cDiamond Sword'
-          Function:
-            Type: 'BUY'
-            Value: 50
+DefaultShop:
+  Pages:
+    MainPage:
+      Size: 27
+      Name: '&8&lCategories'
+      BACKGROUND:
+        Icon: BLACK_STAINED_GLASS_PANE
+      Weapons:
+        Icon: DIAMOND_SWORD
+        Name: '&c&lWeapons'
+        Slot: 10
+        ItemFlags:
+        - 'HIDE_ATTRIBUTES'
+        Lore:
+        - ''
+        - '&7Combative tools, sharp projectiles, and'
+        - '&7many other was to kill Players can be'
+        - '&7found here.'
+        Functions:
+          goto:
+            Type: GOTO
+            Value: Weapons
+          sound:
+            Type: PLAYSOUND
+            Value:
+            - UI_BUTTON_CLICK
+            - '1'
+            - '1'
+      Blocks:
+        Icon: GRASS_BLOCK
+        Name: '&7&lBuilding Materials'
+        Slot: 11
+        Lore:
+        - ''
+        - '&7Strong, small, white, and black'
+        - '&7all the kinds of different blocks'
+        - '&7that you need are here.'
+        Functions:
+          goto:
+            Type: GOTO
+            Value: Blocks
+          sound:
+            Type: PLAYSOUND
+            Value:
+            - UI_BUTTON_CLICK
+            - '1'
+            - '1'
+      Raid:
+        Icon: TNT
+        Name: '&c&lRaiding Materials'
+        Slot: 12
+        Lore:
+        - ''
+        - '&7Hiss... &cB&eO&cO&4M&7!'
+        - '&7All the materials you need to raid'
+        - '&7and pillage other bases are here.'
+        Functions:
+          goto:
+            Type: GOTO
+            Value: Raid
+          sound:
+            Type: PLAYSOUND
+            Value:
+            - UI_BUTTON_CLICK
+            - '1'
+            - '1'
+      Misc:
+        Icon: NAME_TAG
+        Name: '&e&lMiscellaneous'
+        Slot: 13
+        Lore:
+        - ''
+        - '&7Can''t find something? It''s probably here.'
+        Functions:
+          goto:
+            Type: GOTO
+            Value: Misc
+          sound:
+            Type: PLAYSOUND
+            Value:
+            - UI_BUTTON_CLICK
+            - '1'
+            - '1'
+    Weapons:
+      Size: 36
+      Name: Weapons
+      sword:
+        Icon: DIAMOND_SWORD
+        Name: '&cDiamond Sword'
+        Slot: 1
+        Functions:
+          buy:
+            Type: BUY
+            Value:
+            - '50'
+            - DIAMOND_SWORD:3:0:Test Sword:first line|secondline:unbreakable:sharpness=3:unbreaking=2

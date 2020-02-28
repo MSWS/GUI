@@ -1,7 +1,8 @@
 name: Shop
-main: xyz.msws.shop.Shop
+main: xyz.msws.shop.ShopPlugin
 version: 1.0.0
 author: MSWS
+api-version: 1.13
 commands:
   shop:
     usage: /<command>

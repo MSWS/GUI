@@ -9,6 +9,7 @@ import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
 import org.bukkit.configuration.serialization.SerializableAs;
 import org.bukkit.enchantments.Enchantment;
@@ -25,7 +26,7 @@ public class CItem implements ConfigurationSerializable {
 
 	private ItemMeta meta;
 
-	private GUIFunction function;
+	private List<GUIFunction> functions = new ArrayList<>();
 
 	private Map<String, Object> data = new HashMap<>();
 
@@ -39,10 +40,54 @@ public class CItem implements ConfigurationSerializable {
 		this.meta = item.getItemMeta();
 	}
 
+	public CItem(String s) {
+		List<String> values = new ArrayList<String>();
+
+		for (String e : s.split(":"))
+			values.add(e);
+
+		Material mat = Material.valueOf(values.get(0));
+
+		int amo = (values.size() >= 1) ? (values.get(1).equals("") ? 1 : Integer.parseInt(values.get(1))) : 1;
+		int damage = (values.size() >= 2) ? (values.get(2).equals("") ? 0 : Integer.parseInt(values.get(2))) : 0;
+		item = new ItemStack(mat);
+		amount(amo);
+		meta = item.getItemMeta();
+		if (damage != 0)
+			damage(damage);
+		if (values.size() >= 3) {
+			String name = values.get(3);
+			if (!name.isEmpty())
+				name(name);
+		}
+		if (values.size() >= 4)
+			lore(values.get(4).split("\\|"));
+		if (values.contains("unbreakable")) {
+			unbreakable(true);
+			values.remove("unbreakable");
+		}
+		if (values.size() >= 5) {
+			for (int i = 5; i < values.size(); i++) {
+				try {
+					ItemFlag flag = ItemFlag.valueOf(values.get(i));
+					itemFlag(flag);
+					continue;
+				} catch (IllegalArgumentException e) {
+				}
+
+				Enchantment ench = Enchantment.getByKey(
+						NamespacedKey.minecraft(values.get(i).substring(0, values.get(i).indexOf("=")).toLowerCase()));
+
+				enchantment(ench, Integer.parseInt(values.get(i).substring(values.get(i).indexOf("=") + 1)));
+			}
+		}
+
+		this.item = new ItemStack(mat);
+	}
+
 	@SuppressWarnings({ "unchecked", "deprecation" })
 	public CItem(Map<String, Object> data) {
 		this(Material.valueOf((String) data.get("Icon")));
-
 		if (data.containsKey("Amount"))
 			amount((int) data.get("Amount"));
 		if (data.containsKey("Damage"))
@@ -139,12 +184,21 @@ public class CItem implements ConfigurationSerializable {
 		return this;
 	}
 
-	public GUIFunction getFunction() {
-		return function;
+	public List<GUIFunction> getFunctions() {
+		return functions;
 	}
 
-	public void setFunction(GUIFunction function) {
-		this.function = function;
+	public void addFunction(GUIFunction function) {
+		MSG.log("Added function");
+		this.functions.add(function);
+	}
+
+	public void clearFunctions() {
+		this.functions.clear();
+	}
+
+	public void setFunctions(List<GUIFunction> functions) {
+		this.functions = functions;
 	}
 
 }

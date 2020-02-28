@@ -1,12 +1,15 @@
 package xyz.msws.shop.utils;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.MemorySection;
 import org.bukkit.entity.Player;
 import org.bukkit.util.Vector;
 
@@ -73,6 +76,16 @@ public class Utils {
 			match = match.substring(0, match.length() - separator.length());
 		MSG.tell(sender, "Online Player Search", MSG.FORMAT_INFO + name + " " + MSG.DEFAULT + "matched " + MSG.NUMBER
 				+ matches.size() + " " + MSG.DEFAULT + "names. " + match);
+		return null;
+	}
+
+	@SuppressWarnings({ "unchecked" })
+	public static Map<String, Object> mapValues(Object o, boolean deep) {
+		if (o instanceof MemorySection) {
+			return ((MemorySection) o).getValues(deep);
+		}
+		if (o instanceof Map<?, ?>)
+			return (HashMap<String, Object>) o;
 		return null;
 	}
 }
