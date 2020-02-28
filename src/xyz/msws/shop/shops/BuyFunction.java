@@ -1,6 +1,7 @@
 package xyz.msws.shop.shops;
 
-import org.bukkit.entity.HumanEntity;
+import org.bukkit.Sound;
+import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 
 import xyz.msws.shop.utils.Eco;
@@ -19,14 +20,18 @@ public class BuyFunction implements GUIFunction {
 
 	@Override
 	public void execute(InventoryClickEvent event) {
-		HumanEntity player = event.getWhoClicked();
-		player.getInventory().addItem(item.build());
+		Player player = (Player) event.getWhoClicked();
 
-		if (Eco.getGold(player) < this.cost) {
-			MSG.tell(player, "Shop", "You have insufficient gold! (" + this.cost + ")");
+		double gold = Eco.getGold(player.getInventory());
+
+		if (gold < this.cost) {
+			MSG.tell(player, "Shop", "You have insufficient gold! (" + (int) gold + "/" + (int) this.cost + ")");
 			return;
 		}
 
-		MSG.tell(player, "Shop", "You purchased this thingy mabob");
+		MSG.tell(player, "Shop", "You successfully purchased " + item.getName());
+		player.playSound(player.getLocation(), Sound.ENTITY_ITEM_PICKUP, 2, 1);
+		Eco.deduct(player.getInventory(), cost);
+		player.getInventory().addItem(item.build());
 	}
 }

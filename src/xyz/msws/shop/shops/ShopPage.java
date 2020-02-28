@@ -15,6 +15,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.metadata.FixedMetadataValue;
 
 import xyz.msws.shop.ShopPlugin;
 import xyz.msws.shop.shops.GUIFunction.Type;
@@ -57,7 +58,6 @@ public class ShopPage implements Listener {
 			if (!itemValues.containsKey("Icon") || !itemValues.containsKey("Slot"))
 				continue;
 
-			MSG.log("Item: " + itemValues.get("Icon"));
 			CItem item = new CItem(itemValues);
 			if (itemValues.containsKey("Functions")) {
 				Map<String, Object> values = Utils.mapValues(itemValues.get("Functions"), true);
@@ -107,7 +107,7 @@ public class ShopPage implements Listener {
 		if (!(event.getWhoClicked() instanceof Player))
 			return;
 		Player player = (Player) event.getWhoClicked();
-		if (!ShopPlugin.getPlugin().getShop().getPlayerPage(player).equals(this))
+		if (!this.equals(ShopPlugin.getPlugin().getShop().getPlayerPage(player)))
 			return;
 		int slot = event.getRawSlot();
 		event.setCancelled(true);
@@ -119,6 +119,16 @@ public class ShopPage implements Listener {
 
 	@EventHandler
 	public void onClose(InventoryCloseEvent event) {
-
+		Player player = (Player) event.getPlayer();
+		if (player.hasMetadata("ignoreClose")) {
+			int left = player.getMetadata("ignoreClose").get(0).asInt() - 1;
+			if (left == 0) {
+				player.removeMetadata("ignoreClose", ShopPlugin.getPlugin());
+				return;
+			}
+			player.setMetadata("ignoreClose", new FixedMetadataValue(ShopPlugin.getPlugin(), left));
+			return;
+		}
+		ShopPlugin.getPlugin().getShop().close((Player) event.getPlayer());
 	}
 }

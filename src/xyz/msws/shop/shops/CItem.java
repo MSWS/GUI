@@ -48,8 +48,8 @@ public class CItem implements ConfigurationSerializable {
 
 		Material mat = Material.valueOf(values.get(0));
 
-		int amo = (values.size() >= 1) ? (values.get(1).equals("") ? 1 : Integer.parseInt(values.get(1))) : 1;
-		int damage = (values.size() >= 2) ? (values.get(2).equals("") ? 0 : Integer.parseInt(values.get(2))) : 0;
+		int amo = (values.size() > 1) ? (values.get(1).equals("") ? 1 : Integer.parseInt(values.get(1))) : 1;
+		int damage = (values.size() > 2) ? (values.get(2).equals("") ? 0 : Integer.parseInt(values.get(2))) : 0;
 		item = new ItemStack(mat);
 		amount(amo);
 		meta = item.getItemMeta();
@@ -60,13 +60,13 @@ public class CItem implements ConfigurationSerializable {
 			if (!name.isEmpty())
 				name(name);
 		}
-		if (values.size() >= 4)
+		if (values.size() > 4)
 			lore(values.get(4).split("\\|"));
 		if (values.contains("unbreakable")) {
 			unbreakable(true);
 			values.remove("unbreakable");
 		}
-		if (values.size() >= 5) {
+		if (values.size() > 5) {
 			for (int i = 5; i < values.size(); i++) {
 				try {
 					ItemFlag flag = ItemFlag.valueOf(values.get(i));
@@ -81,8 +81,11 @@ public class CItem implements ConfigurationSerializable {
 				enchantment(ench, Integer.parseInt(values.get(i).substring(values.get(i).indexOf("=") + 1)));
 			}
 		}
-
 		this.item = new ItemStack(mat);
+	}
+
+	public String getName() {
+		return meta.hasDisplayName() ? meta.getDisplayName() : MSG.camelCase(item.getType() + "");
 	}
 
 	@SuppressWarnings({ "unchecked", "deprecation" })
@@ -189,7 +192,6 @@ public class CItem implements ConfigurationSerializable {
 	}
 
 	public void addFunction(GUIFunction function) {
-		MSG.log("Added function");
 		this.functions.add(function);
 	}
 

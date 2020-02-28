@@ -2,9 +2,9 @@ package xyz.msws.shop.shops;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.metadata.FixedMetadataValue;
 
 import xyz.msws.shop.ShopPlugin;
-import xyz.msws.shop.utils.MSG;
 
 public class GotoFunction implements GUIFunction {
 
@@ -16,7 +16,8 @@ public class GotoFunction implements GUIFunction {
 
 	@Override
 	public void execute(InventoryClickEvent event) {
-		MSG.tell(event.getWhoClicked(), "Shop", "You clicked a button");
+		Player player = (Player) event.getWhoClicked();
+		player.setMetadata("ignoreClose", new FixedMetadataValue(ShopPlugin.getPlugin(), 2));
 		ShopPlugin.getPlugin().getShop().open((Player) event.getWhoClicked(), page);
 	}
 

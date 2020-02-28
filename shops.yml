@@ -4,13 +4,14 @@ DefaultShop:
       Size: 27
       Name: '&8&lCategories'
       BACKGROUND:
+        Name: ''
         Icon: BLACK_STAINED_GLASS_PANE
       Weapons:
         Icon: DIAMOND_SWORD
         Name: '&c&lWeapons'
         Slot: 10
         ItemFlags:
-        - 'HIDE_ATTRIBUTES'
+        - HIDE_ATTRIBUTES
         Lore:
         - ''
         - '&7Combative tools, sharp projectiles, and'
@@ -19,7 +20,7 @@ DefaultShop:
         Functions:
           goto:
             Type: GOTO
-            Value: Weapons
+            Value: '&c&lWeapons'
           sound:
             Type: PLAYSOUND
             Value:
@@ -29,7 +30,7 @@ DefaultShop:
       Blocks:
         Icon: GRASS_BLOCK
         Name: '&7&lBuilding Materials'
-        Slot: 11
+        Slot: 12
         Lore:
         - ''
         - '&7Strong, small, white, and black'
@@ -48,7 +49,7 @@ DefaultShop:
       Raid:
         Icon: TNT
         Name: '&c&lRaiding Materials'
-        Slot: 12
+        Slot: 14
         Lore:
         - ''
         - '&7Hiss... &cB&eO&cO&4M&7!'
@@ -67,7 +68,7 @@ DefaultShop:
       Misc:
         Icon: NAME_TAG
         Name: '&e&lMiscellaneous'
-        Slot: 13
+        Slot: 16
         Lore:
         - ''
         - '&7Can''t find something? It''s probably here.'
@@ -82,15 +83,34 @@ DefaultShop:
             - '1'
             - '1'
     Weapons:
-      Size: 36
-      Name: Weapons
-      sword:
+      Size: 54
+      Name: '&c&lWeapons'
+      BACKGROUND:
+        Icon: 'BLUE_STAINED_GLASS_PANE'
+        Name: ''
+      dsword:
         Icon: DIAMOND_SWORD
         Name: '&cDiamond Sword'
-        Slot: 1
+        Lore:
+        - ''
+        - '&aCost: &e13 Gold'
+        Slot: 0
         Functions:
           buy:
             Type: BUY
             Value:
-            - '50'
-            - DIAMOND_SWORD:3:0:Test Sword:first line|secondline:unbreakable:sharpness=3:unbreaking=2
+            - '13'
+            - DIAMOND_SWORD
+      isword:
+        Icon: IRON_SWORD
+        Name: '&6Iron Sword'
+        Lore:
+        - ''
+        - '&aCost: &e10 Gold'
+        Slot: 9
+        Functions:
+          buy:
+            Type: BUY
+            Value:
+            - 10
+            - IRON_SWORD

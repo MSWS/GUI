@@ -15,7 +15,6 @@ import org.bukkit.event.Listener;
 import com.google.common.base.Preconditions;
 
 import xyz.msws.shop.ShopPlugin;
-import xyz.msws.shop.utils.MSG;
 import xyz.msws.shop.utils.Utils;
 
 public class Shop implements Listener {
@@ -37,9 +36,6 @@ public class Shop implements Listener {
 		pageData = Utils.mapValues(o, false);
 
 		for (Entry<String, Object> page : pageData.entrySet()) {
-//			if (Utils.mapValues(page.getValue(), true) == null)
-//				continue;
-			MSG.log("New page from " + page.getKey() + " (" + page.getValue() + ")");
 			ShopPage p = new ShopPage(Utils.mapValues(page.getValue(), true));
 			pages.add(p);
 		}
@@ -60,6 +56,10 @@ public class Shop implements Listener {
 		ShopPage p = getPage(page);
 		playerPages.put(player.getUniqueId(), p);
 		player.openInventory(p.create());
+	}
+
+	public void close(Player player) {
+		playerPages.remove(player.getUniqueId());
 	}
 
 	public ShopPage getPlayerPage(Player player) {
