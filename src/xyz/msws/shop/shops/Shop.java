@@ -24,9 +24,12 @@ public class Shop implements Listener {
 
 	private List<ShopPage> pages;
 
-	public Shop(Map<String, Object> data) {
+	private String id;
+
+	public Shop(String id, Map<String, Object> data) {
 		Preconditions.checkArgument(verifyData(data), "Invalid data");
 
+		this.id = id;
 		this.data = data;
 		pages = new ArrayList<ShopPage>();
 		playerPages = new HashMap<>();
@@ -43,8 +46,12 @@ public class Shop implements Listener {
 		Bukkit.getPluginManager().registerEvents(this, ShopPlugin.getPlugin());
 	}
 
-	public Shop(ConfigurationSection section) {
-		this(section.getValues(true));
+	public Shop(String id, ConfigurationSection section) {
+		this(id, section.getValues(true));
+	}
+
+	public String getId() {
+		return id;
 	}
 
 	public void open(Player player) {

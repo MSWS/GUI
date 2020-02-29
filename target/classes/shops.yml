@@ -203,12 +203,12 @@ DefaultShop:
         Slot: 3
         Lore:
         - ''
-        - '&aCost: &e400 Gold'
+        - '&aCost: &e350 Gold'
         Functions:
           buy:
             Type: BUY
             Value:
-            - 400
+            - 350
             - GOLDEN_HELMET
             - GOLDEN_CHESTPLATE
             - GOLDEN_LEGGINGS
@@ -219,14 +219,14 @@ DefaultShop:
         Slot: 4
         Lore:
         - ''
-        - '&aCost: &e300 Gold'
+        - '&aCost: &e150 Gold'
         ItemFlags:
         - 'HIDE_ATTRIBUTES'
         Functions:
           buy:
             Type: BUY
             Value:
-            - 300
+            - 150
             - LEATHER_HELMET
             - LEATHER_CHESTPLATE
             - LEATHER_LEGGINGS
@@ -243,10 +243,24 @@ DefaultShop:
             Value:
             - 35
             - BOW
-      arrow:
+      arrow1:
+        Icon: ARROW
+        Slot: 6
+        Lore:
+        - ''
+        - '&aCost: &e2 Gold'
+        Functions:
+          buy:
+            Type: BUY
+            Value:
+            - 2
+            - ARROW
+        ItemFlags:
+        - 'HIDE_ATTRIBUTES'
+      arrow16:
         Icon: ARROW
         Amount: 16
-        Slot: 6
+        Slot: 7
         Lore:
         - ''
         - '&aCost: &e25 Gold'
@@ -256,6 +270,19 @@ DefaultShop:
             Value:
             - 25
             - ARROW:16
+      arrow64:
+        Icon: ARROW
+        Amount: 64
+        Slot: 8
+        Lore:
+        - ''
+        - '&aCost: &e80 Gold'
+        Functions:
+          buy:
+            Type: BUY
+            Value:
+            - 80
+            - ARROW:64
       dhelmet:
         Icon: DIAMOND_HELMET
         Slot: 10
@@ -366,5 +393,159 @@ DefaultShop:
             Value:
             - 50
             - IRON_BOOTS
+        ItemFlags:
+        - 'HIDE_ATTRIBUTES'
+      ghelmet:
+        Icon: GOLDEN_HELMET
+        Slot: 12
+        Lore:
+        - ''
+        - '&aCost: &e35 Gold'
+        ItemFlags:
+        - 'HIDE_ATTRIBUTES'
+        Functions:
+          buy:
+            Type: BUY
+            Value:
+            - 35
+            - GOLDEN_HELMET
+      gchest:
+        Icon: GOLDEN_CHESTPLATE
+        Slot: 21
+        Lore:
+        - ''
+        - '&aCost: &e70 Gold'
+        ItemFlags:
+        - 'HIDE_ATTRIBUTES'
+        Functions:
+          buy:
+            Type: BUY
+            Value:
+            - 70
+            - GOLDEN_CHESTPLATE
+      glegs:
+        Icon: GOLDEN_LEGGINGS
+        Slot: 30
+        Lore:
+        - ''
+        - '&aCost: &e60 Gold'
+        ItemFlags:
+        - 'HIDE_ATTRIBUTES'
+        Functions:
+          buy:
+            Type: BUY
+            Value:
+            - 60
+            - GOLDEN_LEGGINGS
+      gboots:
+        Icon: GOLDEN_BOOTS
+        Slot: 39
+        Lore:
+        - ''
+        - '&aCost: &e30 Gold'
+        Functions:
+          buy:
+            Type: BUY
+            Value:
+            - 30
+            - GOLDEN_BOOTS
+        ItemFlags:
+        - 'HIDE_ATTRIBUTES'
+      lhelmet:
+        Icon: LEATHER_HELMET
+        Slot: 13
+        Lore:
+        - ''
+        - '&aCost: &e25 Gold'
+        ItemFlags:
+        - 'HIDE_ATTRIBUTES'
+        Functions:
+          buy:
+            Type: BUY
+            Value:
+            - 35
+            - LEATHER_HELMET
+      lchest:
+        Icon: LEATHER_CHESTPLATE
+        Slot: 22
+        Lore:
+        - ''
+        - '&aCost: &e50 Gold'
+        ItemFlags:
+        - 'HIDE_ATTRIBUTES'
+        Functions:
+          buy:
+            Type: BUY
+            Value:
+            - 50
+            - LEATHER_CHESTPLATE
+      llegs:
+        Icon: LEATHER_LEGGINGS
+        Slot: 31
+        Lore:
+        - ''
+        - '&aCost: &e40 Gold'
+        ItemFlags:
+        - 'HIDE_ATTRIBUTES'
+        Functions:
+          buy:
+            Type: BUY
+            Value:
+            - 40
+            - LEATHER_LEGGINGS
+      lboots:
+        Icon: LEATHER_BOOTS
+        Slot: 40
+        Lore:
+        - ''
+        - '&aCost: &e10 Gold'
+        Functions:
+          buy:
+            Type: BUY
+            Value:
+            - 10
+            - LEATHER_BOOTS
+        ItemFlags:
+        - 'HIDE_ATTRIBUTES'
+      shield:
+        Icon: SHIELD
+        Slot: 14
+        Lore:
+        - ''
+        - '&aCost: &e20 Gold'
+        Functions:
+          buy:
+            Type: BUY
+            Value:
+            - 20
+            - SHIELD
+        ItemFlags:
+        - 'HIDE_ATTRIBUTES'
+      trident:
+        Icon: TRIDENT
+        Slot: 15
+        Lore:
+        - ''
+        - '&aCost: &e100 Gold'
+        Functions:
+          buy:
+            Type: BUY
+            Value:
+            - 100
+            - TRIDENT
+        ItemFlags:
+        - 'HIDE_ATTRIBUTES'
+      undying:
+        Icon: TOTEM_OF_UNDYING
+        Slot: 16
+        Lore:
+        - ''
+        - '&aCost: &e200 Gold'
+        Functions:
+          buy:
+            Type: BUY
+            Value:
+            - 200
+            - TOTEM_OF_UNDYING
         ItemFlags:
         - 'HIDE_ATTRIBUTES'

@@ -23,8 +23,8 @@ public class GotoFunction implements GUIFunction {
 
 			@Override
 			public void run() {
-				ShopPlugin.getPlugin().getShop().open((Player) event.getWhoClicked(), page);
-
+				ShopPlugin.getPlugin().getShopManager().open(player,
+						ShopPlugin.getPlugin().getShopManager().getShop(player), page);
 			}
 		}.runTaskLater(ShopPlugin.getPlugin(), 1);
 	}

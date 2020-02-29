@@ -108,7 +108,7 @@ public class ShopPage implements Listener {
 		if (!(event.getWhoClicked() instanceof Player))
 			return;
 		Player player = (Player) event.getWhoClicked();
-		if (!this.equals(ShopPlugin.getPlugin().getShop().getPlayerPage(player)))
+		if (!this.equals(ShopPlugin.getPlugin().getShopManager().getShop(player).getPlayerPage(player)))
 			return;
 		int slot = event.getRawSlot();
 		event.setCancelled(true);
@@ -130,6 +130,6 @@ public class ShopPage implements Listener {
 			player.setMetadata("ignoreClose", new FixedMetadataValue(ShopPlugin.getPlugin(), left));
 			return;
 		}
-		ShopPlugin.getPlugin().getShop().close((Player) event.getPlayer());
+		ShopPlugin.getPlugin().getShopManager().close(player, ShopPlugin.getPlugin().getShopManager().getShop(player));
 	}
 }

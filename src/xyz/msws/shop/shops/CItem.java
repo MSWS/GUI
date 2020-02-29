@@ -114,6 +114,27 @@ public class CItem implements ConfigurationSerializable {
 		this.data = data;
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder result = new StringBuilder();
+		result.append(item.getType() + ":");
+		result.append(item.getAmount() + ":");
+		if (item instanceof Damageable)
+			result.append(((Damageable) item).getDamage() + ":");
+		result.append((meta.hasDisplayName() ? meta.getDisplayName() : "") + ":");
+		result.append((meta.hasLore() ? String.join("|", meta.getLore()) : "") + ":");
+		if (meta.isUnbreakable())
+			result.append("unbreakable:");
+		for (ItemFlag flag : ItemFlag.values()) {
+			if (item.hasItemFlag(flag))
+				result.append(flag.toString() + ":");
+		}
+		for (Entry<Enchantment, Integer> ench : item.getEnchantments().entrySet())
+			result.append(ench.getKey().getKey().getKey().toLowerCase() + "=" + ench.getValue() + ":");
+
+		return result.toString().substring(0, result.length() - 2);
+	}
+
 	@SuppressWarnings("deprecation")
 	@Override
 	public Map<String, Object> serialize() {
