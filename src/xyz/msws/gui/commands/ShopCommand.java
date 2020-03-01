@@ -14,8 +14,6 @@ import java.util.List;
 
 public class ShopCommand implements CommandExecutor, TabCompleter {
 
-    // Test difference
-
     private GUIPlugin plugin;
 
     public ShopCommand(GUIPlugin plugin) {
