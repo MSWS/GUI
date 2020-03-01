@@ -1,4 +1,4 @@
-package xyz.msws.shop.shops;
+package xyz.msws.gui.shops;
 
 import org.bukkit.Sound;
 import org.bukkit.entity.HumanEntity;

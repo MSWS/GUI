@@ -1,4 +1,4 @@
-package xyz.msws.shop.shops;
+package xyz.msws.gui.shops;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;

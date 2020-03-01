@@ -1,4 +1,4 @@
-package xyz.msws.shop.shops;
+package xyz.msws.gui.shops;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,24 +14,24 @@ import org.bukkit.event.Listener;
 
 import com.google.common.base.Preconditions;
 
-import xyz.msws.shop.ShopPlugin;
-import xyz.msws.shop.utils.Utils;
+import xyz.msws.gui.GUIPlugin;
+import xyz.msws.gui.utils.Utils;
 
-public class Shop implements Listener {
+public class GUI implements Listener {
 	@SuppressWarnings("unused")
 	private Map<String, Object> data;
-	private Map<UUID, ShopPage> playerPages;
+	private Map<UUID, GUIPage> playerPages;
 
-	private List<ShopPage> pages;
+	private List<GUIPage> pages;
 
 	private String id;
 
-	public Shop(String id, Map<String, Object> data) {
+	public GUI(String id, Map<String, Object> data) {
 		Preconditions.checkArgument(verifyData(data), "Invalid data");
 
 		this.id = id;
 		this.data = data;
-		pages = new ArrayList<ShopPage>();
+		pages = new ArrayList<GUIPage>();
 		playerPages = new HashMap<>();
 
 		Map<String, Object> pageData = new HashMap<String, Object>();
@@ -39,14 +39,14 @@ public class Shop implements Listener {
 		pageData = Utils.mapValues(o, false);
 
 		for (Entry<String, Object> page : pageData.entrySet()) {
-			ShopPage p = new ShopPage(Utils.mapValues(page.getValue(), true));
+			GUIPage p = new GUIPage(Utils.mapValues(page.getValue(), true));
 			pages.add(p);
 		}
 
-		Bukkit.getPluginManager().registerEvents(this, ShopPlugin.getPlugin());
+		Bukkit.getPluginManager().registerEvents(this, GUIPlugin.getPlugin());
 	}
 
-	public Shop(String id, ConfigurationSection section) {
+	public GUI(String id, ConfigurationSection section) {
 		this(id, section.getValues(true));
 	}
 
@@ -55,12 +55,11 @@ public class Shop implements Listener {
 	}
 
 	public void open(Player player) {
-		playerPages.put(player.getUniqueId(), pages.get(0));
-		player.openInventory(pages.get(0).create());
+		open(player, pages.get(0).getID());
 	}
 
 	public void open(Player player, String page) {
-		ShopPage p = getPage(page);
+		GUIPage p = getPage(page);
 		playerPages.put(player.getUniqueId(), p);
 		player.openInventory(p.create());
 	}
@@ -69,11 +68,11 @@ public class Shop implements Listener {
 		playerPages.remove(player.getUniqueId());
 	}
 
-	public ShopPage getPlayerPage(Player player) {
+	public GUIPage getPlayerPage(Player player) {
 		return playerPages.get(player.getUniqueId());
 	}
 
-	public ShopPage getPage(String name) {
+	public GUIPage getPage(String name) {
 		return pages.stream().filter(p -> p.getID().equals(name)).findFirst().orElse(null);
 	}
 

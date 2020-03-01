@@ -1,4 +1,4 @@
-package xyz.msws.shop.utils;
+package xyz.msws.gui.utils;
 
 import java.util.Collection;
 

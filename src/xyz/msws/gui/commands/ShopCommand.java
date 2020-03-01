@@ -1,4 +1,4 @@
-package xyz.msws.shop.commands;
+package xyz.msws.gui.commands;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,15 +11,15 @@ import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import xyz.msws.shop.ShopPlugin;
-import xyz.msws.shop.shops.CItem;
-import xyz.msws.shop.utils.MSG;
+import xyz.msws.gui.GUIPlugin;
+import xyz.msws.gui.shops.CItem;
+import xyz.msws.gui.utils.MSG;
 
 public class ShopCommand implements CommandExecutor, TabCompleter {
 
-	private ShopPlugin plugin;
+	private GUIPlugin plugin;
 
-	public ShopCommand(ShopPlugin plugin) {
+	public ShopCommand(GUIPlugin plugin) {
 		PluginCommand command = plugin.getCommand("shop");
 		command.setExecutor(this);
 		command.setTabCompleter(this);

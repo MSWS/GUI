@@ -1,5 +1,5 @@
-name: Shop
-main: xyz.msws.shop.ShopPlugin
+name: GUI
+main: xyz.msws.gui.GUIPlugin
 version: 1.0.0
 author: MSWS
 api-version: 1.13

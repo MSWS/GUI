@@ -1,11 +1,11 @@
-package xyz.msws.shop.shops;
+package xyz.msws.gui.shops;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import xyz.msws.shop.ShopPlugin;
+import xyz.msws.gui.GUIPlugin;
 
 public class GotoFunction implements GUIFunction {
 
@@ -18,15 +18,15 @@ public class GotoFunction implements GUIFunction {
 	@Override
 	public void execute(InventoryClickEvent event) {
 		Player player = (Player) event.getWhoClicked();
-		player.setMetadata("ignoreClose", new FixedMetadataValue(ShopPlugin.getPlugin(), 2));
+		player.setMetadata("ignoreClose", new FixedMetadataValue(GUIPlugin.getPlugin(), 2));
 		new BukkitRunnable() {
 
 			@Override
 			public void run() {
-				ShopPlugin.getPlugin().getShopManager().open(player,
-						ShopPlugin.getPlugin().getShopManager().getShop(player), page);
+				GUIPlugin.getPlugin().getShopManager().open(player,
+						GUIPlugin.getPlugin().getShopManager().getShop(player), page);
 			}
-		}.runTaskLater(ShopPlugin.getPlugin(), 1);
+		}.runTaskLater(GUIPlugin.getPlugin(), 1);
 	}
 
 }

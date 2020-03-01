@@ -1,11 +1,11 @@
-package xyz.msws.shop.shops;
+package xyz.msws.gui.shops;
 
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 
-import xyz.msws.shop.utils.Eco;
-import xyz.msws.shop.utils.MSG;
+import xyz.msws.gui.utils.Eco;
+import xyz.msws.gui.utils.MSG;
 
 public class BuyFunction implements GUIFunction {
 
@@ -15,6 +15,14 @@ public class BuyFunction implements GUIFunction {
 
 	public BuyFunction(Number value, CItem... items) {
 		cost = value.doubleValue();
+
+		double v = 0;
+		if (cost == -1) {
+			for (CItem i : items)
+				v += Eco.getBuyPrice(i.build());
+			cost = v;
+		}
+
 		this.items = items;
 	}
 
@@ -25,7 +33,9 @@ public class BuyFunction implements GUIFunction {
 		double gold = Eco.getGold(player.getInventory());
 
 		if (gold < this.cost) {
-			MSG.tell(player, "Shop", "You have insufficient gold! (" + (int) gold + "/" + (int) this.cost + ")");
+			MSG.tell(player, "Shop", MSG.ERROR + "You have insufficient gold! " + MSG.FORMAT_SEPARATOR + "(" + MSG.MONEY
+					+ (int) gold + MSG.FORMAT_SEPARATOR + "/&6" + +(int) this.cost + MSG.FORMAT_SEPARATOR + ")");
+			player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_NO, .5f, 1f);
 			return;
 		}
 

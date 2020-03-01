@@ -1,4 +1,4 @@
-package xyz.msws.shop;
+package xyz.msws.gui;
 
 import java.io.File;
 
@@ -7,22 +7,23 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import xyz.msws.shop.commands.ShopCommand;
-import xyz.msws.shop.shops.ShopManager;
+import xyz.msws.gui.commands.ShopCommand;
+import xyz.msws.gui.shops.GUIManager;
 
-public class ShopPlugin extends JavaPlugin implements Listener {
-	private static ShopPlugin plugin;
+public class GUIPlugin extends JavaPlugin implements Listener {
+	private static GUIPlugin plugin;
 
 //	private Shop shop;
-	private ShopManager shops;
+	private GUIManager shops;
 
 	@Override
 	public void onEnable() {
 		saveResource("shops.yml", false);
+		saveResource("prices.yml", false);
 		plugin = this;
 
 //		shops = YamlConfiguration.loadConfiguration(new File(getDataFolder(), "shops.yml"));
-		shops = new ShopManager(this);
+		shops = new GUIManager(this);
 		shops.loadShops(YamlConfiguration.loadConfiguration(new File(getDataFolder(), "shops.yml")));
 
 		new ShopCommand(this);
@@ -32,11 +33,11 @@ public class ShopPlugin extends JavaPlugin implements Listener {
 		Bukkit.getPluginManager().registerEvents(this, this);
 	}
 
-	public static ShopPlugin getPlugin() {
+	public static GUIPlugin getPlugin() {
 		return plugin;
 	}
 
-	public ShopManager getShopManager() {
+	public GUIManager getShopManager() {
 		return shops;
 	}
 }

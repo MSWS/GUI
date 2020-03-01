@@ -1,4 +1,4 @@
-package xyz.msws.shop.shops;
+package xyz.msws.gui.shops;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,7 +18,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.Damageable;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import xyz.msws.shop.utils.MSG;
+import xyz.msws.gui.utils.Eco;
+import xyz.msws.gui.utils.MSG;
 
 @SerializableAs("CItem")
 public class CItem implements ConfigurationSerializable {
@@ -164,8 +165,14 @@ public class CItem implements ConfigurationSerializable {
 	}
 
 	public CItem lore(List<String> lore) {
-		meta.setLore(lore.stream().map(s -> MSG.color("&r" + s)).collect(Collectors.toList()));
+		meta.setLore(lore.stream().map(s -> MSG.color("&r" + format(s))).collect(Collectors.toList()));
 		return this;
+	}
+
+	private String format(String s) {
+		return s.replace("%sell_price%", (int) Eco.getSellPrice(item) + "")
+				.replace("%buy_price%", (int) Eco.getBuyPrice(item) + "")
+				.replace("%price%", (int) Eco.getPrice(item) + "");
 	}
 
 	public CItem lore(String... lore) {

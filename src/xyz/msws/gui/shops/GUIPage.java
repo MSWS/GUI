@@ -1,4 +1,4 @@
-package xyz.msws.shop.shops;
+package xyz.msws.gui.shops;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,12 +17,12 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.metadata.FixedMetadataValue;
 
-import xyz.msws.shop.ShopPlugin;
-import xyz.msws.shop.shops.GUIFunction.Type;
-import xyz.msws.shop.utils.MSG;
-import xyz.msws.shop.utils.Utils;
+import xyz.msws.gui.GUIPlugin;
+import xyz.msws.gui.shops.GUIFunction.Type;
+import xyz.msws.gui.utils.MSG;
+import xyz.msws.gui.utils.Utils;
 
-public class ShopPage implements Listener {
+public class GUIPage implements Listener {
 
 	private String id;
 
@@ -32,15 +32,15 @@ public class ShopPage implements Listener {
 
 	private Inventory inv;
 
-	public ShopPage(Map<String, Object> data) {
+	public GUIPage(Map<String, Object> data) {
 		this.data = data;
 		this.id = (String) data.get("Name");
 		loadItems();
 
-		Bukkit.getPluginManager().registerEvents(this, ShopPlugin.getPlugin());
+		Bukkit.getPluginManager().registerEvents(this, GUIPlugin.getPlugin());
 	}
 
-	public ShopPage(ConfigurationSection data) {
+	public GUIPage(ConfigurationSection data) {
 		this(data.getValues(true));
 	}
 
@@ -108,7 +108,7 @@ public class ShopPage implements Listener {
 		if (!(event.getWhoClicked() instanceof Player))
 			return;
 		Player player = (Player) event.getWhoClicked();
-		if (!this.equals(ShopPlugin.getPlugin().getShopManager().getShop(player).getPlayerPage(player)))
+		if (!this.equals(GUIPlugin.getPlugin().getShopManager().getShop(player).getPlayerPage(player)))
 			return;
 		int slot = event.getRawSlot();
 		event.setCancelled(true);
@@ -124,12 +124,14 @@ public class ShopPage implements Listener {
 		if (player.hasMetadata("ignoreClose")) {
 			int left = player.getMetadata("ignoreClose").get(0).asInt() - 1;
 			if (left == 0) {
-				player.removeMetadata("ignoreClose", ShopPlugin.getPlugin());
+				player.removeMetadata("ignoreClose", GUIPlugin.getPlugin());
 				return;
 			}
-			player.setMetadata("ignoreClose", new FixedMetadataValue(ShopPlugin.getPlugin(), left));
+			player.setMetadata("ignoreClose", new FixedMetadataValue(GUIPlugin.getPlugin(), left));
 			return;
 		}
-		ShopPlugin.getPlugin().getShopManager().close(player, ShopPlugin.getPlugin().getShopManager().getShop(player));
+		if (GUIPlugin.getPlugin().getShopManager().getShop(player) != null)
+			GUIPlugin.getPlugin().getShopManager().close(player,
+					GUIPlugin.getPlugin().getShopManager().getShop(player));
 	}
 }

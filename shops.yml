@@ -549,3 +549,17 @@ DefaultShop:
             - TOTEM_OF_UNDYING
         ItemFlags:
         - 'HIDE_ATTRIBUTES'
+      gapple:
+        Icon: GOLDEN_APPLE
+        Slot: 17
+        Lore:
+        - ''
+        - '&aCost: &e75 Gold'
+        Functions:
+          buy:
+            Type: BUY
+            Value:
+            - 75
+            - GOLDEN_APPLE
+        ItemFlags:
+        - 'HIDE_ATTRIBUTES'

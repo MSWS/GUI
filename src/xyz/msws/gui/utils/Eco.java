@@ -1,5 +1,6 @@
-package xyz.msws.shop.utils;
+package xyz.msws.gui.utils;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -13,20 +14,61 @@ import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 import org.bukkit.Material;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+
+import xyz.msws.gui.GUIPlugin;
+import xyz.msws.gui.shops.CItem;
 
 public class Eco {
 
 	private static Map<Material, Double> goldValues = new HashMap<Material, Double>();
 
+	private static Map<ItemStack, Double> values = new HashMap<>();
+
+	private static double sellPrice = .8, buyPrice = 1.4;
+
 	static {
+		File priceFile = new File(GUIPlugin.getPlugin().getDataFolder(), "prices.yml");
+		if (priceFile.exists()) {
+			YamlConfiguration prices = YamlConfiguration.loadConfiguration(priceFile);
+			for (Entry<String, Object> item : prices.getValues(false).entrySet()) {
+				CItem i = new CItem(item.getKey());
+				values.put(i.build(), ((Number) item.getValue()).doubleValue());
+			}
+		}
+
 		goldValues.put(Material.GOLD_NUGGET, 1.0);
 		goldValues.put(Material.GOLD_INGOT, 9.0);
 		goldValues.put(Material.GOLD_BLOCK, 9 * 9.0);
 
 		goldValues = goldValues.entrySet().stream().sorted(entryValue())
 				.collect(Collectors.toMap(e -> e.getKey(), e -> e.getValue(), (e1, e2) -> e2, LinkedHashMap::new));
+	}
+
+	public static double getPrice(Material mat) {
+		return values.getOrDefault(new ItemStack(mat), 0.0);
+	}
+
+	public static double getPrice(ItemStack item) {
+		return values.getOrDefault(item, 0.0);
+	}
+
+	public static double getSellPrice(Material mat) {
+		return getPrice(mat) * sellPrice;
+	}
+
+	public static double getSellPrice(ItemStack item) {
+		return getPrice(item) * sellPrice;
+	}
+
+	public static double getBuyPrice(Material mat) {
+		return getPrice(mat) * buyPrice;
+	}
+
+	public static double getBuyPrice(ItemStack item) {
+		return getPrice(item) * buyPrice;
 	}
 
 	public static double getGold(Inventory inv) {
@@ -42,7 +84,7 @@ public class Eco {
 		for (ItemStack item : items) {
 			if (item == null || item.getType() == Material.AIR)
 				continue;
-			total += goldValues.getOrDefault(item.getType(), 0.0) * item.getAmount();
+			total += values.getOrDefault(item.getType(), 0.0) * item.getAmount();
 		}
 		return total;
 	}

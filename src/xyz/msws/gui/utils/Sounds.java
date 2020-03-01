@@ -1,4 +1,4 @@
-package xyz.msws.shop.utils;
+package xyz.msws.gui.utils;
 
 /**
  * Version independent spigot sounds.
