@@ -2,8 +2,8 @@
 name: Bug Report
 about: Report a bug, unintended feature, or otherwise unwanted behavior
 title: ''
-labels: ''
-assignees: ''
+labels: Bug
+assignees: MSWS
 
 ---
 
