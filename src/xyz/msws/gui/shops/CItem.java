@@ -1,13 +1,6 @@
 package xyz.msws.gui.shops;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
-
+import com.sun.istack.internal.NotNull;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
@@ -17,9 +10,12 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.Damageable;
 import org.bukkit.inventory.meta.ItemMeta;
-
 import xyz.msws.gui.utils.Eco;
 import xyz.msws.gui.utils.MSG;
+
+import java.util.*;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
 @SerializableAs("CItem")
 public class CItem implements ConfigurationSerializable {
@@ -42,10 +38,9 @@ public class CItem implements ConfigurationSerializable {
 	}
 
 	public CItem(String s) {
-		List<String> values = new ArrayList<String>();
+		List<String> values = new ArrayList<>();
 
-		for (String e : s.split(":"))
-			values.add(e);
+		Collections.addAll(values, s.split(":"));
 
 		Material mat = Material.valueOf(values.get(0));
 		int amo = (values.size() > 1) ? (values.get(1).equals("") ? 1 : Integer.parseInt(values.get(1))) : 1;
@@ -74,6 +69,7 @@ public class CItem implements ConfigurationSerializable {
 					itemFlag(flag);
 					continue;
 				} catch (IllegalArgumentException e) {
+					e.printStackTrace();
 				}
 
 				Enchantment ench = Enchantment.getByKey(
@@ -118,26 +114,27 @@ public class CItem implements ConfigurationSerializable {
 	@Override
 	public String toString() {
 		StringBuilder result = new StringBuilder();
-		result.append(item.getType() + ":");
-		result.append(item.getAmount() + ":");
+		result.append(item.getType()).append(":");
+		result.append(item.getAmount()).append(":");
 		if (item instanceof Damageable)
-			result.append(((Damageable) item).getDamage() + ":");
-		result.append((meta.hasDisplayName() ? meta.getDisplayName() : "") + ":");
-		result.append((meta.hasLore() ? String.join("|", meta.getLore()) : "") + ":");
+			result.append(((Damageable) item).getDamage()).append(":");
+		result.append(meta.hasDisplayName() ? meta.getDisplayName() : "").append(":");
+		result.append(meta.hasLore() ? String.join("|", meta.getLore()) : "").append(":");
 		if (meta.isUnbreakable())
 			result.append("unbreakable:");
 		for (ItemFlag flag : ItemFlag.values()) {
 			if (item.hasItemFlag(flag))
-				result.append(flag.toString() + ":");
+				result.append(flag.toString()).append(":");
 		}
 		for (Entry<Enchantment, Integer> ench : item.getEnchantments().entrySet())
-			result.append(ench.getKey().getKey().getKey().toLowerCase() + "=" + ench.getValue() + ":");
+			result.append(ench.getKey().getKey().getKey().toLowerCase()).append("=").append(ench.getValue()).append(":");
 
 		return result.toString().substring(0, result.length() - 2);
 	}
 
 	@SuppressWarnings("deprecation")
 	@Override
+	@NotNull
 	public Map<String, Object> serialize() {
 		Map<String, Object> data = this.data;
 		data.put("Icon", item.getType().toString());
@@ -148,7 +145,7 @@ public class CItem implements ConfigurationSerializable {
 		if (meta.hasLore())
 			data.put("Lore", meta.getLore());
 		data.put("ItemFlags",
-				meta.getItemFlags().parallelStream().map(flag -> flag.toString()).collect(Collectors.toSet()));
+				meta.getItemFlags().parallelStream().map(Enum::toString).collect(Collectors.toSet()));
 		data.put("Unbreakable", meta.isUnbreakable());
 
 		List<String> enchantments = new ArrayList<>();

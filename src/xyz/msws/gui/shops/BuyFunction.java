@@ -3,13 +3,12 @@ package xyz.msws.gui.shops;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
-
 import xyz.msws.gui.utils.Eco;
 import xyz.msws.gui.utils.MSG;
 
 public class BuyFunction implements GUIFunction {
 
-	private double cost = 0;
+	private double cost;
 
 	private CItem[] items;
 

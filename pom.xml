@@ -19,7 +19,7 @@
 		</plugins>
 		<resources>
 			<resource>
-				<directory />
+				<directory>${basedir}/resources</directory>
 				<includes>
 					<include>*.yml</include>
 				</includes>

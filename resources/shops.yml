@@ -12,8 +12,6 @@ DefaultShop:
         ItemFlags:
         - 'HIDE_ATTRIBUTES'
         Slot: 10
-        ItemFlags:
-        - HIDE_ATTRIBUTES
         Lore:
         - ''
         - '&7Combative tools, sharp projectiles, and'

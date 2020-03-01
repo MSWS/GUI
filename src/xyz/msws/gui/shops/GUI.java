@@ -1,21 +1,15 @@
 package xyz.msws.gui.shops;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.UUID;
-
+import com.google.common.base.Preconditions;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
-
-import com.google.common.base.Preconditions;
-
 import xyz.msws.gui.GUIPlugin;
 import xyz.msws.gui.utils.Utils;
+
+import java.util.*;
+import java.util.Map.Entry;
 
 public class GUI implements Listener {
 	@SuppressWarnings("unused")
@@ -31,12 +25,11 @@ public class GUI implements Listener {
 
 		this.id = id;
 		this.data = data;
-		pages = new ArrayList<GUIPage>();
+		pages = new ArrayList<>();
 		playerPages = new HashMap<>();
 
-		Map<String, Object> pageData = new HashMap<String, Object>();
 		Object o = data.get("Pages");
-		pageData = Utils.mapValues(o, false);
+		Map<String, Object> pageData = Utils.mapValues(o, false);
 
 		for (Entry<String, Object> page : pageData.entrySet()) {
 			GUIPage p = new GUIPage(Utils.mapValues(page.getValue(), true));
@@ -79,9 +72,7 @@ public class GUI implements Listener {
 	public boolean verifyData(Map<String, Object> data) {
 		if (data == null)
 			return false;
-		if (!data.containsKey("Pages"))
-			return false;
-		return true;
+		return data.containsKey("Pages");
 	}
 
 }

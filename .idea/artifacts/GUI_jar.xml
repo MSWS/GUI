@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="GUI:jar">
+    <output-path>$USER_HOME$/Documents/Servers/TestServer/plugins</output-path>
+    <root id="archive" name="GUI.jar">
+      <element id="module-output" name="GUI" />
+    </root>
+  </artifact>
+</component>
