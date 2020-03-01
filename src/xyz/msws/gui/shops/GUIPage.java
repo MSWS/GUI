@@ -108,6 +108,8 @@ public class GUIPage implements Listener {
 		if (!(event.getWhoClicked() instanceof Player))
 			return;
 		Player player = (Player) event.getWhoClicked();
+		if (GUIPlugin.getPlugin().getShopManager().getShop(player) == null)
+			return;
 		if (!this.equals(GUIPlugin.getPlugin().getShopManager().getShop(player).getPlayerPage(player)))
 			return;
 		int slot = event.getRawSlot();
