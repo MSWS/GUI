@@ -1,43 +1,53 @@
 package xyz.msws.gui;
 
-import java.io.File;
-
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
-
 import xyz.msws.gui.commands.ShopCommand;
 import xyz.msws.gui.shops.GUIManager;
 
+import java.io.File;
+
 public class GUIPlugin extends JavaPlugin implements Listener {
-	private static GUIPlugin plugin;
+    private static GUIPlugin plugin;
 
-//	private Shop shop;
-	private GUIManager shops;
+    //	private Shop shop;
+    private GUIManager shops;
+    private YamlConfiguration config;
 
-	@Override
-	public void onEnable() {
-		saveResource("shops.yml", false);
-		saveResource("prices.yml", false);
-		plugin = this;
+    public static GUIPlugin getPlugin() {
+        return plugin;
+    }
+
+    @Override
+    public void onEnable() {
+        if (!new File(getDataFolder(), "shops.yml").exists())
+            saveResource("shops.yml", false);
+        if (!new File(getDataFolder(), "prices.yml").exists())
+            saveResource("prices.yml", false);
+        if (!new File(getDataFolder(), "config.yml").exists())
+            saveResource("config.yml", false);
+        plugin = this;
+
+        this.config = YamlConfiguration.loadConfiguration(new File(getDataFolder(), "config.yml"));
 
 //		shops = YamlConfiguration.loadConfiguration(new File(getDataFolder(), "shops.yml"));
-		shops = new GUIManager(this);
-		shops.loadShops(YamlConfiguration.loadConfiguration(new File(getDataFolder(), "shops.yml")));
+        shops = new GUIManager(this);
+        shops.loadShops(YamlConfiguration.loadConfiguration(new File(getDataFolder(), "shops.yml")));
 
-		new ShopCommand(this);
+        new ShopCommand(this);
 
 //		shop = new Shop(shops.getConfigurationSection("DefaultShop").getValues(false));
 
-		Bukkit.getPluginManager().registerEvents(this, this);
-	}
+        Bukkit.getPluginManager().registerEvents(this, this);
+    }
 
-	public static GUIPlugin getPlugin() {
-		return plugin;
-	}
+    public YamlConfiguration getConfig() {
+        return this.config;
+    }
 
-	public GUIManager getShopManager() {
-		return shops;
-	}
+    public GUIManager getShopManager() {
+        return shops;
+    }
 }

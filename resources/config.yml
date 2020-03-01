@@ -1,0 +1,4 @@
+PurchaseWithItems: #You can change what items players can buy items with
+  GOLD_BLOCK: 81
+  GOLD_INGOT: 9
+  GOLD_NUGGET: 1

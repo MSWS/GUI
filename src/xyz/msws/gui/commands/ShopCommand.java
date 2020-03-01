@@ -74,8 +74,8 @@ public class ShopCommand implements CommandExecutor, TabCompleter {
 
     @Override
     @NotNull
-    public List<String> onTabComplete(@NotNull CommandSender sender, Command command, String alias, String[] args) {
-        List<String> result = new ArrayList<String>();
+    public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+        List<String> result = new ArrayList<>();
         if (args.length == 1)
             for (String res : new String[]{"getitem"}) {
                 if (!sender.hasPermission("shop.command." + res))

@@ -1,25 +1,15 @@
 package xyz.msws.gui.utils;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
-
 import org.bukkit.Material;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-
 import xyz.msws.gui.GUIPlugin;
 import xyz.msws.gui.shops.CItem;
+
+import java.io.File;
+import java.util.*;
+import java.util.Map.Entry;
 
 public class Eco {
 
@@ -39,12 +29,19 @@ public class Eco {
 			}
 		}
 
-		goldValues.put(Material.GOLD_NUGGET, 1.0);
-		goldValues.put(Material.GOLD_INGOT, 9.0);
-		goldValues.put(Material.GOLD_BLOCK, 9 * 9.0);
+		if (!GUIPlugin.getPlugin().getConfig().isConfigurationSection("PurchaseWithItems")) {
+			MSG.log("Unable to get shop prices from config.yml");
+		} else {
+			Map<String, Object> values = GUIPlugin.getPlugin().getConfig().getConfigurationSection("PurchaseWithItems").getValues(false);
 
-		goldValues = goldValues.entrySet().stream().sorted(entryValue())
-				.collect(Collectors.toMap(e -> e.getKey(), e -> e.getValue(), (e1, e2) -> e2, LinkedHashMap::new));
+			for (Entry<String, Object> e : values.entrySet())
+				goldValues.put(Material.valueOf(e.getKey()), ((Number) e.getValue()).doubleValue());
+		}
+
+
+//        goldValues.put(Material.GOLD_NUGGET, 1.0);
+//        goldValues.put(Material.GOLD_INGOT, 9.0);
+//        goldValues.put(Material.GOLD_BLOCK, 9 * 9.0);
 	}
 
 	public static double getPrice(Material mat) {
@@ -84,7 +81,7 @@ public class Eco {
 		for (ItemStack item : items) {
 			if (item == null || item.getType() == Material.AIR)
 				continue;
-			total += values.getOrDefault(item.getType(), 0.0) * item.getAmount();
+			total += goldValues.getOrDefault(item.getType(), 0.0) * item.getAmount();
 		}
 		return total;
 	}
@@ -141,9 +138,9 @@ public class Eco {
 	}
 
 	public static List<ItemStack> makeChange(double amo, Collection<? extends ItemStack> options,
-			boolean useSmallItems) {
+											 boolean useSmallItems) {
 		List<ItemStack> result = new ArrayList<ItemStack>();
-		List<ItemStack> clone = new ArrayList<ItemStack>();
+		List<ItemStack> clone = new ArrayList<>();
 
 		clone.addAll(options);
 		clone.sort(value());
@@ -170,6 +167,8 @@ public class Eco {
 		return new Comparator<Map.Entry<Material, Double>>() {
 			@Override
 			public int compare(Entry<Material, Double> o1, Entry<Material, Double> o2) {
+				if (o2.getValue().equals(o2.getValue()))
+					return 0;
 				return o1.getValue() > o2.getValue() ? -1 : 1;
 			}
 		};
@@ -179,6 +178,11 @@ public class Eco {
 		return new Comparator<ItemStack>() {
 			@Override
 			public int compare(ItemStack arg0, ItemStack arg1) {
+				if (arg0 == null && arg1 == null)
+					return 0;
+				if (arg0 != null && arg1 != null)
+					if (arg0.equals(arg1))
+						return 0;
 				return goldValues.getOrDefault(arg0 == null ? Material.AIR : arg0.getType(), 0.0) > goldValues
 						.getOrDefault(arg1 == null ? Material.AIR : arg1.getType(), 0.0) ? -1 : 1;
 			}
