@@ -5,7 +5,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import xyz.msws.gui.commands.ShopCommand;
-import xyz.msws.gui.shops.GUIManager;
+import xyz.msws.gui.guis.GUIManager;
 
 import java.io.File;
 
@@ -13,7 +13,7 @@ public class GUIPlugin extends JavaPlugin implements Listener {
     private static GUIPlugin plugin;
 
     //	private Shop shop;
-    private GUIManager shops;
+    private GUIManager guis;
     private YamlConfiguration config;
 
     public static GUIPlugin getPlugin() {
@@ -33,8 +33,8 @@ public class GUIPlugin extends JavaPlugin implements Listener {
         this.config = YamlConfiguration.loadConfiguration(new File(getDataFolder(), "config.yml"));
 
 //		shops = YamlConfiguration.loadConfiguration(new File(getDataFolder(), "shops.yml"));
-        shops = new GUIManager(this);
-        shops.loadShops(YamlConfiguration.loadConfiguration(new File(getDataFolder(), "shops.yml")));
+        guis = new GUIManager(this);
+        guis.loadGUIs(YamlConfiguration.loadConfiguration(new File(getDataFolder(), "shops.yml")));
 
         new ShopCommand(this);
 
@@ -47,7 +47,7 @@ public class GUIPlugin extends JavaPlugin implements Listener {
         return this.config;
     }
 
-    public GUIManager getShopManager() {
-        return shops;
+    public GUIManager getGUIManager() {
+        return guis;
     }
 }

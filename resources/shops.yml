@@ -10,32 +10,32 @@ DefaultShop:
         Icon: DIAMOND_SWORD
         Name: '&c&lWeapons'
         ItemFlags:
-        - 'HIDE_ATTRIBUTES'
+          - 'HIDE_ATTRIBUTES'
         Slot: 10
         Lore:
-        - ''
-        - '&7Combative tools, sharp projectiles, and'
-        - '&7many other was to kill Players can be'
-        - '&7found here.'
+          - ''
+          - '&7Combative tools, sharp projectiles, and'
+          - '&7many other was to kill Players can be'
+          - '&7found here.'
         Functions:
           goto:
             Type: GOTO
-            Value: '&c&lWeapons'
+            Value: 'Weapons'
           sound:
             Type: PLAYSOUND
             Value:
-            - UI_BUTTON_CLICK
-            - '1'
-            - '1'
+              - UI_BUTTON_CLICK
+              - '1'
+              - '1'
       Blocks:
         Icon: GRASS_BLOCK
         Name: '&7&lBuilding Materials'
         Slot: 12
         Lore:
-        - ''
-        - '&7Strong, small, white, and black'
-        - '&7all the kinds of different blocks'
-        - '&7that you need are here.'
+          - ''
+          - '&7Strong, small, white, and black'
+          - '&7all the kinds of different blocks'
+          - '&7that you need are here.'
         Functions:
           goto:
             Type: GOTO
@@ -43,18 +43,18 @@ DefaultShop:
           sound:
             Type: PLAYSOUND
             Value:
-            - UI_BUTTON_CLICK
-            - '1'
-            - '1'
+              - UI_BUTTON_CLICK
+              - '1'
+              - '1'
       Raid:
         Icon: TNT
         Name: '&c&lRaiding Materials'
         Slot: 14
         Lore:
-        - ''
-        - '&7Hiss... &cB&eO&cO&4M&7!'
-        - '&7All the materials you need to raid'
-        - '&7and pillage other bases are here.'
+          - ''
+          - '&7Hiss... &cB&eO&cO&4M&7!'
+          - '&7All the materials you need to raid'
+          - '&7and pillage other bases are here.'
         Functions:
           goto:
             Type: GOTO
@@ -62,16 +62,16 @@ DefaultShop:
           sound:
             Type: PLAYSOUND
             Value:
-            - UI_BUTTON_CLICK
-            - '1'
-            - '1'
+              - UI_BUTTON_CLICK
+              - '1'
+              - '1'
       Misc:
         Icon: NAME_TAG
         Name: '&e&lMiscellaneous'
         Slot: 16
         Lore:
-        - ''
-        - '&7Can''t find something? It''s probably here.'
+          - ''
+          - '&7Can''t find something? It''s probably here.'
         Functions:
           goto:
             Type: GOTO
@@ -79,9 +79,20 @@ DefaultShop:
           sound:
             Type: PLAYSOUND
             Value:
-            - UI_BUTTON_CLICK
-            - '1'
-            - '1'
+              - UI_BUTTON_CLICK
+              - '1'
+              - '1'
+      Sell:
+        Icon: GOLD_INGOT
+        Name: '&2&lSell Menu'
+        Slot: 17
+        Lore:
+          - '&7Have unwanted or extra items?'
+          - '&7Sell them here!'
+        Functions:
+          goto:
+            Type: GOTO
+            Value: Sell
     Weapons:
       Size: 54
       Name: '&c&lWeapons'
@@ -92,472 +103,492 @@ DefaultShop:
         Icon: DIAMOND_SWORD
         Name: '&cDiamond Sword'
         Lore:
-        - ''
-        - '&aCost: &e60 Gold'
+          - ''
+          - '&aCost: &e60 Gold'
         ItemFlags:
-        - 'HIDE_ATTRIBUTES'
+          - 'HIDE_ATTRIBUTES'
         Slot: 0
         Functions:
           buy:
             Type: BUY
             Value:
-            - 60
-            - DIAMOND_SWORD
+              - 60
+              - DIAMOND_SWORD
       isword:
         Icon: IRON_SWORD
         Name: '&7Iron Sword'
         Lore:
-        - ''
-        - '&aCost: &e30 Gold'
+          - ''
+          - '&aCost: &e30 Gold'
         ItemFlags:
-        - 'HIDE_ATTRIBUTES'
+          - 'HIDE_ATTRIBUTES'
         Slot: 9
         Functions:
           buy:
             Type: BUY
             Value:
-            - 30
-            - IRON_SWORD
+              - 30
+              - IRON_SWORD
       gsword:
         Icon: GOLDEN_SWORD
         Name: '&6Golden Sword'
         Lore:
-        - ''
-        - '&aCost: &e30 Gold'
+          - ''
+          - '&aCost: &e30 Gold'
         ItemFlags:
-        - 'HIDE_ATTRIBUTES'
+          - 'HIDE_ATTRIBUTES'
         Slot: 18
       ssword:
         Icon: STONE_SWORD
         Name: '&7Stone Sword'
         Lore:
-        - ''
-        - '&aCost: &e10 Gold'
+          - ''
+          - '&aCost: &e10 Gold'
         ItemFlags:
-        - 'HIDE_ATTRIBUTES'
+          - 'HIDE_ATTRIBUTES'
         Slot: 27
         Functions:
           buy:
             Type: BUY
             Value:
-            - 10
-            - STONE_SWORD
+              - 10
+              - STONE_SWORD
       wsword:
         Icon: WOODEN_SWORD
         Name: '&8Wood Sword'
         Lore:
-        - ''
-        - '&aCost: &e5 Gold'
+          - ''
+          - '&aCost: &e5 Gold'
         ItemFlags:
-        - 'HIDE_ATTRIBUTES'
+          - 'HIDE_ATTRIBUTES'
         Slot: 36
         Functions:
           buy:
             Type: BUY
             Value:
-            - 5
-            - STONE_SWORD
+              - 5
+              - STONE_SWORD
       darmor:
         Icon: DIAMOND_HELMET
         Name: '&bFull Diamond Armor'
         Slot: 1
         Lore:
-        - ''
-        - '&aCost: &e500 Gold'
+          - ''
+          - '&aCost: &e500 Gold'
         ItemFlags:
-        - 'HIDE_ATTRIBUTES'
+          - 'HIDE_ATTRIBUTES'
         Functions:
           buy:
             Type: BUY
             Value:
-            - 500
-            - DIAMOND_HELMET
-            - DIAMOND_CHESTPLATE
-            - DIAMOND_LEGGINGS
-            - DIAMOND_BOOTS
+              - 500
+              - DIAMOND_HELMET
+              - DIAMOND_CHESTPLATE
+              - DIAMOND_LEGGINGS
+              - DIAMOND_BOOTS
       iarmor:
         Icon: IRON_HELMET
         Name: '&7Full Iron Armor'
         Slot: 2
         Lore:
-        - ''
-        - '&aCost: &e400 Gold'
+          - ''
+          - '&aCost: &e400 Gold'
         ItemFlags:
-        - 'HIDE_ATTRIBUTES'
+          - 'HIDE_ATTRIBUTES'
         Functions:
           buy:
             Type: BUY
             Value:
-            - 400
-            - IRON_HELMET
-            - IRON_CHESTPLATE
-            - IRON_LEGGINGS
-            - IRON_BOOTS
+              - 400
+              - IRON_HELMET
+              - IRON_CHESTPLATE
+              - IRON_LEGGINGS
+              - IRON_BOOTS
       garmor:
         Icon: GOLDEN_HELMET
         Name: '&6Full Gold Armor'
         ItemFlags:
-        - 'HIDE_ATTRIBUTES'
+          - 'HIDE_ATTRIBUTES'
         Slot: 3
         Lore:
-        - ''
-        - '&aCost: &e350 Gold'
+          - ''
+          - '&aCost: &e350 Gold'
         Functions:
           buy:
             Type: BUY
             Value:
-            - 350
-            - GOLDEN_HELMET
-            - GOLDEN_CHESTPLATE
-            - GOLDEN_LEGGINGS
-            - GOLDEN_BOOTS
+              - 350
+              - GOLDEN_HELMET
+              - GOLDEN_CHESTPLATE
+              - GOLDEN_LEGGINGS
+              - GOLDEN_BOOTS
       larmor:
         Icon: LEATHER_HELMET
         Name: '&8Full Leather Armor'
         Slot: 4
         Lore:
-        - ''
-        - '&aCost: &e150 Gold'
+          - ''
+          - '&aCost: &e150 Gold'
         ItemFlags:
-        - 'HIDE_ATTRIBUTES'
+          - 'HIDE_ATTRIBUTES'
         Functions:
           buy:
             Type: BUY
             Value:
-            - 150
-            - LEATHER_HELMET
-            - LEATHER_CHESTPLATE
-            - LEATHER_LEGGINGS
-            - LEATHER_BOOTS
+              - 150
+              - LEATHER_HELMET
+              - LEATHER_CHESTPLATE
+              - LEATHER_LEGGINGS
+              - LEATHER_BOOTS
       bow:
         Icon: BOW
         Slot: 5
         Lore:
-        - ''
-        - '&aCost: &e35 Gold'
+          - ''
+          - '&aCost: &e35 Gold'
         Functions:
           buy:
             Type: BUY
             Value:
-            - 35
-            - BOW
+              - 35
+              - BOW
       arrow1:
         Icon: ARROW
         Slot: 6
         Lore:
-        - ''
-        - '&aCost: &e2 Gold'
+          - ''
+          - '&aCost: &e2 Gold'
         Functions:
           buy:
             Type: BUY
             Value:
-            - 2
-            - ARROW
+              - 2
+              - ARROW
         ItemFlags:
-        - 'HIDE_ATTRIBUTES'
+          - 'HIDE_ATTRIBUTES'
       arrow16:
         Icon: ARROW
         Amount: 16
         Slot: 7
         Lore:
-        - ''
-        - '&aCost: &e25 Gold'
+          - ''
+          - '&aCost: &e25 Gold'
         Functions:
           buy:
             Type: BUY
             Value:
-            - 25
-            - ARROW:16
+              - 25
+              - ARROW:16
       arrow64:
         Icon: ARROW
         Amount: 64
         Slot: 8
         Lore:
-        - ''
-        - '&aCost: &e80 Gold'
+          - ''
+          - '&aCost: &e80 Gold'
         Functions:
           buy:
             Type: BUY
             Value:
-            - 80
-            - ARROW:64
+              - 80
+              - ARROW:64
       dhelmet:
         Icon: DIAMOND_HELMET
         Slot: 10
         Lore:
-        - ''
-        - '&aCost: &e75 Gold'
+          - ''
+          - '&aCost: &e75 Gold'
         ItemFlags:
-        - 'HIDE_ATTRIBUTES'
+          - 'HIDE_ATTRIBUTES'
         Functions:
           buy:
             Type: BUY
             Value:
-            - 75
-            - DIAMOND_HELMET
+              - 75
+              - DIAMOND_HELMET
       dchest:
         Icon: DIAMOND_CHESTPLATE
         Slot: 19
         Lore:
-        - ''
-        - '&aCost: &e200 Gold'
+          - ''
+          - '&aCost: &e200 Gold'
         ItemFlags:
-        - 'HIDE_ATTRIBUTES'
+          - 'HIDE_ATTRIBUTES'
         Functions:
           buy:
             Type: BUY
             Value:
-            - 200
-            - DIAMOND_CHESTPLATE
+              - 200
+              - DIAMOND_CHESTPLATE
       dlegs:
         Icon: DIAMOND_LEGGINGS
         Slot: 28
         Lore:
-        - ''
-        - '&aCost: &e150 Gold'
+          - ''
+          - '&aCost: &e150 Gold'
         ItemFlags:
-        - 'HIDE_ATTRIBUTES'
+          - 'HIDE_ATTRIBUTES'
         Functions:
           buy:
             Type: BUY
             Value:
-            - 150
-            - DIAMOND_LEGGINGS
+              - 150
+              - DIAMOND_LEGGINGS
       dboots:
         Icon: DIAMOND_BOOTS
         Slot: 37
         Lore:
-        - ''
-        - '&aCost: &e75 Gold'
+          - ''
+          - '&aCost: &e75 Gold'
         ItemFlags:
-        - 'HIDE_ATTRIBUTES'
+          - 'HIDE_ATTRIBUTES'
         Functions:
           buy:
             Type: BUY
             Value:
-            - 75
-            - DIAMOND_BOOTS
+              - 75
+              - DIAMOND_BOOTS
       ihelmet:
         Icon: IRON_HELMET
         Slot: 11
         Lore:
-        - ''
-        - '&aCost: &e50 Gold'
+          - ''
+          - '&aCost: &e50 Gold'
         ItemFlags:
-        - 'HIDE_ATTRIBUTES'
+          - 'HIDE_ATTRIBUTES'
         Functions:
           buy:
             Type: BUY
             Value:
-            - 50
-            - IRON_HELMET
+              - 50
+              - IRON_HELMET
       ichest:
         Icon: IRON_CHESTPLATE
         Slot: 20
         Lore:
-        - ''
-        - '&aCost: &e180 Gold'
+          - ''
+          - '&aCost: &e180 Gold'
         ItemFlags:
-        - 'HIDE_ATTRIBUTES'
+          - 'HIDE_ATTRIBUTES'
         Functions:
           buy:
             Type: BUY
             Value:
-            - 180
-            - IRON_CHESTPLATE
+              - 180
+              - IRON_CHESTPLATE
       ilegs:
         Icon: IRON_LEGGINGS
         Slot: 29
         Lore:
-        - ''
-        - '&aCost: &e120 Gold'
+          - ''
+          - '&aCost: &e120 Gold'
         ItemFlags:
-        - 'HIDE_ATTRIBUTES'
+          - 'HIDE_ATTRIBUTES'
         Functions:
           buy:
             Type: BUY
             Value:
-            - 120
-            - IRON_LEGGINGS
+              - 120
+              - IRON_LEGGINGS
       iboots:
         Icon: IRON_BOOTS
         Slot: 38
         Lore:
-        - ''
-        - '&aCost: &e50 Gold'
+          - ''
+          - '&aCost: &e50 Gold'
         Functions:
           buy:
             Type: BUY
             Value:
-            - 50
-            - IRON_BOOTS
+              - 50
+              - IRON_BOOTS
         ItemFlags:
-        - 'HIDE_ATTRIBUTES'
+          - 'HIDE_ATTRIBUTES'
       ghelmet:
         Icon: GOLDEN_HELMET
         Slot: 12
         Lore:
-        - ''
-        - '&aCost: &e35 Gold'
+          - ''
+          - '&aCost: &e35 Gold'
         ItemFlags:
-        - 'HIDE_ATTRIBUTES'
+          - 'HIDE_ATTRIBUTES'
         Functions:
           buy:
             Type: BUY
             Value:
-            - 35
-            - GOLDEN_HELMET
+              - 35
+              - GOLDEN_HELMET
       gchest:
         Icon: GOLDEN_CHESTPLATE
         Slot: 21
         Lore:
-        - ''
-        - '&aCost: &e70 Gold'
+          - ''
+          - '&aCost: &e70 Gold'
         ItemFlags:
-        - 'HIDE_ATTRIBUTES'
+          - 'HIDE_ATTRIBUTES'
         Functions:
           buy:
             Type: BUY
             Value:
-            - 70
-            - GOLDEN_CHESTPLATE
+              - 70
+              - GOLDEN_CHESTPLATE
       glegs:
         Icon: GOLDEN_LEGGINGS
         Slot: 30
         Lore:
-        - ''
-        - '&aCost: &e60 Gold'
+          - ''
+          - '&aCost: &e60 Gold'
         ItemFlags:
-        - 'HIDE_ATTRIBUTES'
+          - 'HIDE_ATTRIBUTES'
         Functions:
           buy:
             Type: BUY
             Value:
-            - 60
-            - GOLDEN_LEGGINGS
+              - 60
+              - GOLDEN_LEGGINGS
       gboots:
         Icon: GOLDEN_BOOTS
         Slot: 39
         Lore:
-        - ''
-        - '&aCost: &e30 Gold'
+          - ''
+          - '&aCost: &e30 Gold'
         Functions:
           buy:
             Type: BUY
             Value:
-            - 30
-            - GOLDEN_BOOTS
+              - 30
+              - GOLDEN_BOOTS
         ItemFlags:
-        - 'HIDE_ATTRIBUTES'
+          - 'HIDE_ATTRIBUTES'
       lhelmet:
         Icon: LEATHER_HELMET
         Slot: 13
         Lore:
-        - ''
-        - '&aCost: &e25 Gold'
+          - ''
+          - '&aCost: &e25 Gold'
         ItemFlags:
-        - 'HIDE_ATTRIBUTES'
+          - 'HIDE_ATTRIBUTES'
         Functions:
           buy:
             Type: BUY
             Value:
-            - 35
-            - LEATHER_HELMET
+              - 35
+              - LEATHER_HELMET
       lchest:
         Icon: LEATHER_CHESTPLATE
         Slot: 22
         Lore:
-        - ''
-        - '&aCost: &e50 Gold'
+          - ''
+          - '&aCost: &e50 Gold'
         ItemFlags:
-        - 'HIDE_ATTRIBUTES'
+          - 'HIDE_ATTRIBUTES'
         Functions:
           buy:
             Type: BUY
             Value:
-            - 50
-            - LEATHER_CHESTPLATE
+              - 50
+              - LEATHER_CHESTPLATE
       llegs:
         Icon: LEATHER_LEGGINGS
         Slot: 31
         Lore:
-        - ''
-        - '&aCost: &e40 Gold'
+          - ''
+          - '&aCost: &e40 Gold'
         ItemFlags:
-        - 'HIDE_ATTRIBUTES'
+          - 'HIDE_ATTRIBUTES'
         Functions:
           buy:
             Type: BUY
             Value:
-            - 40
-            - LEATHER_LEGGINGS
+              - 40
+              - LEATHER_LEGGINGS
       lboots:
         Icon: LEATHER_BOOTS
         Slot: 40
         Lore:
-        - ''
-        - '&aCost: &e10 Gold'
+          - ''
+          - '&aCost: &e10 Gold'
         Functions:
           buy:
             Type: BUY
             Value:
-            - 10
-            - LEATHER_BOOTS
+              - 10
+              - LEATHER_BOOTS
         ItemFlags:
-        - 'HIDE_ATTRIBUTES'
+          - 'HIDE_ATTRIBUTES'
       shield:
         Icon: SHIELD
         Slot: 14
         Lore:
-        - ''
-        - '&aCost: &e20 Gold'
+          - ''
+          - '&aCost: &e20 Gold'
         Functions:
           buy:
             Type: BUY
             Value:
-            - 20
-            - SHIELD
+              - 20
+              - SHIELD
         ItemFlags:
-        - 'HIDE_ATTRIBUTES'
+          - 'HIDE_ATTRIBUTES'
       trident:
         Icon: TRIDENT
         Slot: 15
         Lore:
-        - ''
-        - '&aCost: &e100 Gold'
+          - ''
+          - '&aCost: &e100 Gold'
         Functions:
           buy:
             Type: BUY
             Value:
-            - 100
-            - TRIDENT
+              - 100
+              - TRIDENT
         ItemFlags:
-        - 'HIDE_ATTRIBUTES'
+          - 'HIDE_ATTRIBUTES'
       undying:
         Icon: TOTEM_OF_UNDYING
         Slot: 16
         Lore:
-        - ''
-        - '&aCost: &e200 Gold'
+          - ''
+          - '&aCost: &e200 Gold'
         Functions:
           buy:
             Type: BUY
             Value:
-            - 200
-            - TOTEM_OF_UNDYING
+              - 200
+              - TOTEM_OF_UNDYING
         ItemFlags:
-        - 'HIDE_ATTRIBUTES'
+          - 'HIDE_ATTRIBUTES'
       gapple:
         Icon: GOLDEN_APPLE
         Slot: 17
         Lore:
-        - ''
-        - '&aCost: &e75 Gold'
+          - ''
+          - '&aCost: &e75 Gold'
         Functions:
           buy:
             Type: BUY
             Value:
-            - 75
-            - GOLDEN_APPLE
+              - 75
+              - GOLDEN_APPLE
         ItemFlags:
-        - 'HIDE_ATTRIBUTES'
+          - 'HIDE_ATTRIBUTES'
+    Sell:
+      Size: 54
+      AllowClicking: true
+      Name: '&b&lSell Menu'
+      SellItem:
+        Icon: HOPPER
+        Slot: 49
+        Name: '&c&lSell All'
+        Lore:
+          - ''
+          - '&7Sell all current items'
+        Functions:
+          sell:
+            Type: SELL
+          sound:
+            Type: PLAYSOUND
+            Value:
+              - UI_BUTTON_CLICK
+              - '1'
+              - '1'

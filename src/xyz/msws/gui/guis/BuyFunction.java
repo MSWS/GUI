@@ -1,4 +1,4 @@
-package xyz.msws.gui.shops;
+package xyz.msws.gui.guis;
 
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -6,7 +6,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import xyz.msws.gui.utils.Eco;
 import xyz.msws.gui.utils.MSG;
 
-public class BuyFunction implements GUIFunction {
+public class BuyFunction implements ItemFunction {
 
 	private double cost;
 

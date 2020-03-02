@@ -6,9 +6,10 @@ import org.bukkit.command.*;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import xyz.msws.gui.GUIPlugin;
-import xyz.msws.gui.shops.CItem;
+import xyz.msws.gui.guis.CItem;
 import xyz.msws.gui.utils.MSG;
 
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,10 +31,7 @@ public class ShopCommand implements CommandExecutor, TabCompleter {
         Player player = checkPlayer(sender, false);
         if (args.length == 0) {
             if (player != null) {
-                MSG.log("Shop Manager: " + plugin.getShopManager());
-                MSG.log("Shop: " + plugin.getShopManager().getShop("DefaultShop"));
-
-                plugin.getShopManager().open(player, "DefaultShop");
+                plugin.getGUIManager().open(player, "DefaultShop");
             } else {
                 MSG.tell(sender, "Shop", "You must be a player to open the shop.");
             }
@@ -63,6 +61,7 @@ public class ShopCommand implements CommandExecutor, TabCompleter {
         return true;
     }
 
+    @Nullable
     private Player checkPlayer(CommandSender sender, boolean verbose) {
         if (sender instanceof Player)
             return (Player) sender;

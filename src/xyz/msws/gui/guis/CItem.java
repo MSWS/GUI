@@ -1,4 +1,4 @@
-package xyz.msws.gui.shops;
+package xyz.msws.gui.guis;
 
 import com.sun.istack.internal.NotNull;
 import org.bukkit.Material;
@@ -23,7 +23,7 @@ public class CItem implements ConfigurationSerializable {
 
 	private ItemMeta meta;
 
-	private List<GUIFunction> functions = new ArrayList<>();
+	private List<ItemFunction> functions = new ArrayList<>();
 
 	private Map<String, Object> data = new HashMap<>();
 
@@ -211,20 +211,20 @@ public class CItem implements ConfigurationSerializable {
 		return this;
 	}
 
-	public List<GUIFunction> getFunctions() {
+	public List<ItemFunction> getFunctions() {
 		return functions;
 	}
 
-	public void addFunction(GUIFunction function) {
-		this.functions.add(function);
+	public void setFunctions(List<ItemFunction> functions) {
+		this.functions = functions;
 	}
 
 	public void clearFunctions() {
 		this.functions.clear();
 	}
 
-	public void setFunctions(List<GUIFunction> functions) {
-		this.functions = functions;
+	public void addFunction(ItemFunction function) {
+		this.functions.add(function);
 	}
 
 }
