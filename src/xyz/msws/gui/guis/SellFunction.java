@@ -44,7 +44,7 @@ public class SellFunction implements ItemFunction {
             ItemStack item = inv.getItem(i);
             if (i == event.getRawSlot())
                 continue;
-            if (item == null || Eco.getSellPrice(item.getType()) == 0)
+            if (item == null || Eco.getSellPrice(item) == 0)
                 continue;
             inv.setItem(i, new ItemStack(Material.AIR));
         }
