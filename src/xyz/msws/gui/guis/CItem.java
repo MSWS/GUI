@@ -10,6 +10,7 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.Damageable;
 import org.bukkit.inventory.meta.ItemMeta;
+import xyz.msws.gui.functions.items.ItemFunction;
 import xyz.msws.gui.utils.Eco;
 import xyz.msws.gui.utils.MSG;
 

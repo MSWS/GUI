@@ -1,8 +1,9 @@
-package xyz.msws.gui.guis;
+package xyz.msws.gui.functions.items;
 
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import xyz.msws.gui.guis.CItem;
 import xyz.msws.gui.utils.Eco;
 import xyz.msws.gui.utils.MSG;
 

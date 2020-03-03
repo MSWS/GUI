@@ -1,9 +1,11 @@
 package xyz.msws.gui.utils;
 
+import me.clip.placeholderapi.PlaceholderAPI;
 import org.apache.commons.lang.StringUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
 import java.util.Collection;
 
@@ -295,6 +297,13 @@ public class MSG {
     public static String parseDecimal(String decimal, int length) {
         return parseDecimal(Double.parseDouble(decimal), length);
     }
+
+    public static String papi(Player p, String s) {
+        if (!Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI"))
+            return s;
+        return PlaceholderAPI.setPlaceholders(p, s);
+    }
+
 
     public enum DefaultFontInfo {
         A('A', 5), a('a', 5), B('B', 5), b('b', 5), C('C', 5), c('c', 5), D('D', 5), d('d', 5), E('E', 5), e('e', 5),

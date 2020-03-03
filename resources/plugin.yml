@@ -3,6 +3,8 @@ main: xyz.msws.gui.GUIPlugin
 version: BETA-0.0.3
 author: MSWS
 api-version: '1.13'
+softdepend:
+  - PlaceholderAPI
 commands:
   shop:
     usage: /<command>

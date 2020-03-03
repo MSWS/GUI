@@ -1,4 +1,4 @@
-package xyz.msws.gui.guis;
+package xyz.msws.gui.functions.pages;
 
 import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
@@ -6,6 +6,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.Inventory;
 import xyz.msws.gui.GUIPlugin;
+import xyz.msws.gui.guis.GUIPage;
 
 public interface PageFunction extends Listener {
     default void register(GUIPage page) {

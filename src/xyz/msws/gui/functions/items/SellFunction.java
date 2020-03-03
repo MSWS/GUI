@@ -1,4 +1,4 @@
-package xyz.msws.gui.guis;
+package xyz.msws.gui.functions.items;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;

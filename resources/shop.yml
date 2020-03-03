@@ -592,3 +592,8 @@ Sell:
           - UI_BUTTON_CLICK
           - '1'
           - '1'
+      cmd:
+        Type: COMMAND
+        Value:
+          - PLAYER
+          - 'say My name is %player%'

@@ -1,7 +1,8 @@
-package xyz.msws.gui.guis;
+package xyz.msws.gui.functions.items;
 
 import org.bukkit.Sound;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import xyz.msws.gui.guis.CItem;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -17,7 +18,7 @@ public interface ItemFunction {
     void execute(InventoryClickEvent event);
 
     enum Type {
-        BUY(BuyFunction.class), SELL(SellFunction.class), COMMAND(null), OPEN_GUI(null), CLOSE(null), PLAYSOUND(SoundFunction.class),
+        BUY(BuyFunction.class), SELL(SellFunction.class), COMMAND(CommandFunction.class), OPEN_GUI(null), CLOSE(null), PLAYSOUND(SoundFunction.class),
         GOTO(GotoFunction.class);
 
         private Class<? extends ItemFunction> fClass;
@@ -45,6 +46,7 @@ public interface ItemFunction {
                 }
                 Object[] params = new Object[casts.size()];
                 List<CItem> items = new ArrayList<>();
+                List<String> strings = new ArrayList<>();
 
                 for (Entry<Integer, Class<?>> entry : casts.entrySet()) {
                     Class<?> c = entry.getValue();
@@ -63,13 +65,25 @@ public interface ItemFunction {
                         for (int i = 1; i < value.length; i++) {
                             items.add(new CItem((String) value[i]));
                         }
+                    } else if (c.equals(CommandFunction.CommandType.class)) {
+                        params[entry.getKey()] = CommandFunction.CommandType.valueOf((String) v);
+                    } else if (c.equals(String[].class)) {
+                        for (int i = 1; i < value.length; i++) {
+                            strings.add((String) value[i]);
+                        }
                     } else {
                         params[entry.getKey()] = entry.getValue().cast(v);
                     }
                 }
+                if (params.length >= 2 && params[1] == null) {
+                    if (!items.isEmpty())
+                        params[1] = items.toArray(new CItem[(items.size())]);
+                    if (!strings.isEmpty())
+                        params[1] = strings.toArray(new String[strings.size()]);
+                }
+
                 if (items.isEmpty())
                     return (T) constructor.newInstance(params);
-                params[1] = items.toArray(new CItem[(items.size())]);
                 return (T) constructor.newInstance(params);
             } catch (InstantiationException | IllegalAccessException | IllegalArgumentException
                     | InvocationTargetException | SecurityException e) {

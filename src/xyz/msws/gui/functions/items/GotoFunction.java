@@ -1,10 +1,11 @@
-package xyz.msws.gui.guis;
+package xyz.msws.gui.functions.items;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.metadata.FixedMetadataValue;
 import org.bukkit.scheduler.BukkitRunnable;
 import xyz.msws.gui.GUIPlugin;
+import xyz.msws.gui.guis.GUIManager;
 
 public class GotoFunction implements ItemFunction {
 

@@ -11,7 +11,9 @@ import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import xyz.msws.gui.GUIPlugin;
-import xyz.msws.gui.guis.ItemFunction.Type;
+import xyz.msws.gui.functions.items.ItemFunction;
+import xyz.msws.gui.functions.items.ItemFunction.Type;
+import xyz.msws.gui.functions.pages.PageFunction;
 import xyz.msws.gui.utils.MSG;
 import xyz.msws.gui.utils.Utils;
 

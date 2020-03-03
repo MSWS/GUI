@@ -1,4 +1,4 @@
-package xyz.msws.gui.guis;
+package xyz.msws.gui.functions.pages;
 
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -10,6 +10,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.scheduler.BukkitRunnable;
 import xyz.msws.gui.GUIPlugin;
+import xyz.msws.gui.guis.CItem;
+import xyz.msws.gui.guis.GUIPage;
 import xyz.msws.gui.utils.Eco;
 import xyz.msws.gui.utils.MSG;
 

@@ -5,6 +5,8 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import xyz.msws.gui.GUIPlugin;
+import xyz.msws.gui.functions.pages.PageFunction;
+import xyz.msws.gui.functions.pages.ShopFunction;
 import xyz.msws.gui.utils.MSG;
 
 import java.io.File;
@@ -51,11 +53,10 @@ public class GUIManager {
             }
         }
         if (shops.listFiles() == null) {
-            MSG.log("No shops found");
+            MSG.warn("No shops found");
             return;
         }
         for (File f : shops.listFiles()) {
-            MSG.log("Registering shop " + f.getName() + " (" + f.getName().replace(".yml", "") + ")");
             YamlConfiguration shopYml = YamlConfiguration.loadConfiguration(f);
             addGUI(new GUI(f.getName().replace(".yml", ""), shopYml.getValues(false)));
         }
