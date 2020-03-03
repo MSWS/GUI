@@ -1,5 +1,5 @@
 # GUI
-GUI is a custom GUI plugin made by me in order to more easily create custom GUIs that are extremely customizeable and configurable
+GUI is a custom GUI plugin made by me in order to more easily create custom GUIs that are extremely customizable and configurable.
 
 **Permissions**<br>
 Permissions are currently being worked on.
@@ -15,7 +15,7 @@ ServerSelector:
 #### Page
 A Page contains its **Name**, **Size**, **Items**, and (if applicable), **functions**. Example:
 ```yaml
-ServerSelector: #THIS IS THE GUI
+ServerSelector: # This is the GUI
   Pages:
     MainPage:
       Name: '&6&lServer Selector'
@@ -69,4 +69,4 @@ Page Functions are declared per-page when creating GUIs. These are less configur
 
 | ID | Description |
 | --- | --- |
-| ShopFunction | Treats the current GUI as a shop |
+| ShopFunction | Treats the current GUI as a shop (Items put into it will be given a price tag) |
