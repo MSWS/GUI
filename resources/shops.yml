@@ -576,6 +576,8 @@ DefaultShop:
       Size: 54
       AllowClicking: true
       Name: '&b&lSell Menu'
+      Functions:
+        - 'ShopFunction'
       SellItem:
         Icon: HOPPER
         Slot: 49

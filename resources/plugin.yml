@@ -1,6 +1,6 @@
 name: GUI
 main: xyz.msws.gui.GUIPlugin
-version: 1.0.0
+version: BETA-0.0.2
 author: MSWS
 api-version: 1.13
 commands:
