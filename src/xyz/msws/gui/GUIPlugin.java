@@ -22,8 +22,6 @@ public class GUIPlugin extends JavaPlugin implements Listener {
 
     @Override
     public void onEnable() {
-        if (!new File(getDataFolder(), "shops.yml").exists())
-            saveResource("shops.yml", false);
         if (!new File(getDataFolder(), "prices.yml").exists())
             saveResource("prices.yml", false);
         if (!new File(getDataFolder(), "config.yml").exists())
@@ -32,13 +30,9 @@ public class GUIPlugin extends JavaPlugin implements Listener {
 
         this.config = YamlConfiguration.loadConfiguration(new File(getDataFolder(), "config.yml"));
 
-//		shops = YamlConfiguration.loadConfiguration(new File(getDataFolder(), "shops.yml"));
         guis = new GUIManager(this);
-        guis.loadGUIs(YamlConfiguration.loadConfiguration(new File(getDataFolder(), "shops.yml")));
-
+        guis.loadGUIs();
         new ShopCommand(this);
-
-//		shop = new Shop(shops.getConfigurationSection("DefaultShop").getValues(false));
 
         Bukkit.getPluginManager().registerEvents(this, this);
     }

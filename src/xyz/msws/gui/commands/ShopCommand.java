@@ -31,7 +31,7 @@ public class ShopCommand implements CommandExecutor, TabCompleter {
         Player player = checkPlayer(sender, false);
         if (args.length == 0) {
             if (player != null) {
-                plugin.getGUIManager().open(player, "DefaultShop");
+                plugin.getGUIManager().open(player, "shop");
             } else {
                 MSG.tell(sender, "Shop", "You must be a player to open the shop.");
             }

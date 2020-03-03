@@ -1,6 +1,5 @@
 package xyz.msws.gui.guis;
 
-import com.google.common.base.Preconditions;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
@@ -22,18 +21,14 @@ public class GUI implements Listener {
     private String id;
 
     public GUI(String id, Map<String, Object> data) {
-        Preconditions.checkArgument(verifyData(data), "Invalid data");
-
         this.id = id;
         this.data = data;
         pages = new ArrayList<>();
         playerPages = new HashMap<>();
 
-        Object o = data.get("Pages");
-        Map<String, Object> pageData = Utils.mapValues(o, false);
-
-        for (Entry<String, Object> page : pageData.entrySet()) {
-            GUIPage p = new GUIPage(page.getKey(), Utils.mapValues(page.getValue(), true));
+        for (Entry<String, Object> page : data.entrySet()) {
+            Map<String, Object> d = Utils.mapValues(page.getValue(), false);
+            GUIPage p = new GUIPage(page.getKey(), d);
             pages.add(p);
         }
 
@@ -73,12 +68,6 @@ public class GUI implements Listener {
 
     public GUIPage getPage(String name) {
         return pages.stream().filter(p -> p.getID().equals(name)).findFirst().orElse(null);
-    }
-
-    public boolean verifyData(Map<String, Object> data) {
-        if (data == null)
-            return false;
-        return data.containsKey("Pages");
     }
 
 }
