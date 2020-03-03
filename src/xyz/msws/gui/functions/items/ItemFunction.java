@@ -18,8 +18,8 @@ public interface ItemFunction {
     void execute(InventoryClickEvent event);
 
     enum Type {
-        BUY(BuyFunction.class), SELL(SellFunction.class), COMMAND(CommandFunction.class), OPEN_GUI(null), CLOSE(null), PLAYSOUND(SoundFunction.class),
-        GOTO(GotoFunction.class);
+        BUY(BuyFunction.class), SELL(SellFunction.class), COMMAND(CommandFunction.class), OPEN_GUI(OpenGUIFunction.class),
+        CLOSE(CloseFunction.class), PLAYSOUND(SoundFunction.class), GOTO(GotoFunction.class), MESSAGE(MessageFunction.class);
 
         private Class<? extends ItemFunction> fClass;
 
@@ -68,22 +68,24 @@ public interface ItemFunction {
                     } else if (c.equals(CommandFunction.CommandType.class)) {
                         params[entry.getKey()] = CommandFunction.CommandType.valueOf((String) v);
                     } else if (c.equals(String[].class)) {
-                        for (int i = 1; i < value.length; i++) {
+                        for (int i = entry.getKey(); i < value.length; i++) {
                             strings.add((String) value[i]);
                         }
                     } else {
                         params[entry.getKey()] = entry.getValue().cast(v);
                     }
                 }
-                if (params.length >= 2 && params[1] == null) {
-                    if (!items.isEmpty())
-                        params[1] = items.toArray(new CItem[(items.size())]);
-                    if (!strings.isEmpty())
-                        params[1] = strings.toArray(new String[strings.size()]);
+
+                for (int i = 0; i < params.length; i++) {
+                    Object o = params[i];
+                    if (o == null) {
+                        if (!items.isEmpty())
+                            params[i] = items.toArray(new CItem[(items.size())]);
+                        if (!strings.isEmpty())
+                            params[i] = strings.toArray(new String[strings.size()]);
+                    }
                 }
 
-                if (items.isEmpty())
-                    return (T) constructor.newInstance(params);
                 return (T) constructor.newInstance(params);
             } catch (InstantiationException | IllegalAccessException | IllegalArgumentException
                     | InvocationTargetException | SecurityException e) {
