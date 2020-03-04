@@ -55,7 +55,7 @@ public class GUI implements Listener {
             return;
         }
         playerPages.put(player.getUniqueId(), p);
-        player.openInventory(p.create());
+        player.openInventory(p.create(player));
     }
 
     public void close(Player player) {

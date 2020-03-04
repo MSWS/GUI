@@ -1,6 +1,6 @@
 name: GUI
 main: xyz.msws.gui.GUIPlugin
-version: BETA-0.0.4
+version: BETA-0.0.5
 author: MSWS
 api-version: '1.13'
 softdepend:
@@ -8,3 +8,5 @@ softdepend:
 commands:
   shop:
     usage: /<command>
+  gui:
+    usage: /<command> [GUI]

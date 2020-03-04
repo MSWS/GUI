@@ -95,9 +95,11 @@ public class GUIPage implements Listener {
         }
     }
 
-    public Inventory create() {
+    public Inventory create(Player viewer) {
         this.inv = Bukkit.createInventory(null, (int) data.get("Size"), MSG.color((String) data.get("Name")));
         for (Entry<Integer, CItem> entry : items.entrySet()) {
+            if (entry.getValue().hasData("Permission") && !viewer.hasPermission((String) entry.getValue().getData().get("Permission")))
+                continue;
             inv.setItem(entry.getKey(), entry.getValue().build());
         }
         if (data.containsKey("BACKGROUND")) {

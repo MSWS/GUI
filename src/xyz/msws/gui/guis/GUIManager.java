@@ -18,8 +18,8 @@ import java.util.Map;
 import java.util.UUID;
 
 public class GUIManager {
-    private Map<UUID, GUI> playerShops;
-    private Map<String, GUI> shops;
+    private Map<UUID, GUI> playerGUIs;
+    private Map<String, GUI> guis;
     private Map<String, PageFunction> functions;
 
     @SuppressWarnings("unused")
@@ -28,8 +28,8 @@ public class GUIManager {
     public GUIManager(GUIPlugin plugin) {
         this.plugin = plugin;
 
-        this.playerShops = new HashMap<>();
-        this.shops = new HashMap<>();
+        this.playerGUIs = new HashMap<>();
+        this.guis = new HashMap<>();
         this.functions = new HashMap<>();
 
         functions.put("ShopFunction", new ShopFunction());
@@ -74,33 +74,33 @@ public class GUIManager {
 
     public void open(Player player, GUI shop) {
         shop.open(player);
-        this.playerShops.put(player.getUniqueId(), shop);
+        this.playerGUIs.put(player.getUniqueId(), shop);
     }
 
     public void open(Player player, GUI shop, String page) {
         shop.open(player, page);
-        this.playerShops.put(player.getUniqueId(), shop);
+        this.playerGUIs.put(player.getUniqueId(), shop);
     }
 
     public void open(Player player, String shop) {
         GUI s = getGUI(shop);
         s.open(player);
-        this.playerShops.put(player.getUniqueId(), s);
+        this.playerGUIs.put(player.getUniqueId(), s);
     }
 
     public void close(Player player, GUI shop) {
-        this.playerShops.remove(player.getUniqueId());
+        this.playerGUIs.remove(player.getUniqueId());
         shop.close(player);
     }
 
     public void addGUI(GUI shop) {
         MSG.log("Adding shop: " + shop.getId());
-        this.shops.put(shop.getId(), shop);
+        this.guis.put(shop.getId(), shop);
     }
 
     public GUI getGUI(String id) {
-        Preconditions.checkArgument(shops.containsKey(id), "GUIs does not contain " + id);
-        return shops.get(id);
+        Preconditions.checkArgument(guis.containsKey(id), "GUIs does not contain " + id);
+        return guis.get(id);
     }
 
     public GUI getGUI(Player player) {
@@ -108,7 +108,11 @@ public class GUIManager {
     }
 
     public GUI getGUI(UUID uuid) {
-        return playerShops.get(uuid);
+        return playerGUIs.get(uuid);
+    }
+
+    public Map<String, GUI> getGUIs() {
+        return guis;
     }
 
 }

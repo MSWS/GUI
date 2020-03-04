@@ -150,6 +150,14 @@ public class CItem implements ConfigurationSerializable {
         this.data = data;
     }
 
+    public Map<String, Object> getData() {
+        return data;
+    }
+
+    public boolean hasData(String key) {
+        return data.containsKey(key);
+    }
+
     public String getName() {
         return meta.hasDisplayName() ? meta.getDisplayName() : MSG.camelCase(item.getType() + "");
     }
@@ -200,7 +208,7 @@ public class CItem implements ConfigurationSerializable {
     }
 
     public CItem name(String name) {
-        meta.setDisplayName(MSG.color("&r" + name));
+        meta.setDisplayName(MSG.color("&r" + MSG.papi(null, name)));
         return this;
     }
 

@@ -1,0 +1,6 @@
+HELP_COMMAND:
+  - '&9GUI> &7List of avaialble commands:'
+  - '&7/gui reload - &cReloads the plugin and the GUIs'
+  - '&7/gui list - Lists all current GUIs'
+  - '&7/gui version - Gets the GUI version'
+  - '&7/gui [GUI] - Opens the specified GUI'

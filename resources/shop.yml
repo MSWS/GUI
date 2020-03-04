@@ -562,6 +562,7 @@ Weapons:
   gapple:
     Icon: GOLDEN_APPLE
     Slot: 17
+    Permission: 'gui.seeitem.gapple'
     Lore:
       - ''
       - '&aCost: &e75 Gold'

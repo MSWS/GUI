@@ -5,7 +5,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import xyz.msws.gui.guis.CItem;
 import xyz.msws.gui.utils.Eco;
-import xyz.msws.gui.utils.MSG;
+import xyz.msws.gui.utils.Lang;
 
 public class BuyFunction implements ItemFunction {
 
@@ -33,13 +33,12 @@ public class BuyFunction implements ItemFunction {
 		double gold = Eco.getGold(player.getInventory());
 
 		if (gold < this.cost) {
-			MSG.tell(player, "Shop", MSG.ERROR + "You have insufficient gold! " + MSG.FORMAT_SEPARATOR + "(" + MSG.MONEY
-					+ (int) gold + MSG.FORMAT_SEPARATOR + "/&6" + +(int) this.cost + MSG.FORMAT_SEPARATOR + ")");
+			Lang.FUNCTIONS_BUY_NOTENOUGH.send(player, new Lang.Replace("%current%", (int) gold + ""), new Lang.Replace("%required%", (int) cost + ""));
 			player.playSound(player.getLocation(), Sound.ENTITY_VILLAGER_NO, .5f, 1f);
 			return;
 		}
 
-		MSG.tell(player, "Shop", MSG.SUCCESS + "Successfully purchased");
+		Lang.FUNCTIONS_BUY_SUCCESS.send(player);
 		player.playSound(player.getLocation(), Sound.ENTITY_ITEM_PICKUP, 2, 1);
 		Eco.deduct(player.getInventory(), cost);
 		for (CItem item : items)

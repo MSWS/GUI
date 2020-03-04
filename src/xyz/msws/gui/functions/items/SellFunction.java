@@ -6,7 +6,7 @@ import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import xyz.msws.gui.utils.Eco;
-import xyz.msws.gui.utils.MSG;
+import xyz.msws.gui.utils.Lang;
 
 import java.util.List;
 
@@ -31,12 +31,11 @@ public class SellFunction implements ItemFunction {
             if (item == null || item.getType() == Material.AIR)
                 continue;
 
-            // double v = Eco.getSellPrice(item);
             value += Eco.getSellPrice(item);
         }
 
         if (value == 0) {
-            MSG.tell(player, "Shop", "There aren't any sellable items!");
+            Lang.FUNCTIONS_SELL_NOITEMS.send(player);
             return;
         }
 

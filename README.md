@@ -32,11 +32,12 @@ ServerSelector: # This is the GUI
 ```
 
 #### Item
-An item declares the item's **Icon** and **Slot**. Optional values are Lore, Name, ItemFlags, Enchantments, and Functions. Example:
+An item declares the item's **Icon** and **Slot**. Optional values are Lore, Name, ItemFlags, Enchantments, Permission, and Functions. Example:
 ```yaml
 BroadcastItem:
   Icon: PAPER
   Name: '&c&lBroadcast Server Shutdown'
+  Permission: 'rank.admin'
   Slot: 8
   Lore:
   - ''

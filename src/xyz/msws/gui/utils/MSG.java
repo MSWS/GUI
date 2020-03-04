@@ -45,15 +45,15 @@ public class MSG {
     public static ChatColor RESET = ChatColor.RESET;
 
     public static void log(String message) {
-        tell(Bukkit.getConsoleSender(), MSG.DEFAULT + "[INFO] " + message);
+        tell(Bukkit.getConsoleSender(), DEFAULT + "[INFO] " + message);
     }
 
     public static void warn(String message) {
-        tell(Bukkit.getConsoleSender(), MSG.ERROR + "[WARN] " + message);
+        tell(Bukkit.getConsoleSender(), ERROR + "[WARN] " + message);
     }
 
     public static void error(String message) {
-        tell(Bukkit.getConsoleSender(), MSG.FAIL + "[ERROR] " + message);
+        tell(Bukkit.getConsoleSender(), FAIL + "[ERROR] " + message);
     }
 
     public static void printStackTrace() {
@@ -71,6 +71,10 @@ public class MSG {
             for (Object obj : (Object[]) msg)
                 tell(sender, obj);
         } else {
+            if (sender instanceof Player) {
+                sender.sendMessage(papi((Player) sender, msg.toString()));
+                return;
+            }
             sender.sendMessage(color(msg.toString()));
         }
     }
