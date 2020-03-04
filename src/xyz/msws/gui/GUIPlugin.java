@@ -6,6 +6,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 import xyz.msws.gui.commands.ShopCommand;
 import xyz.msws.gui.guis.GUIManager;
+import xyz.msws.gui.utils.Metrics;
 
 import java.io.File;
 
@@ -20,8 +21,12 @@ public class GUIPlugin extends JavaPlugin implements Listener {
         return plugin;
     }
 
+    private final int ID = 6683;
+
     @Override
     public void onEnable() {
+        Metrics metrics = new Metrics(this, ID);
+
         if (!new File(getDataFolder(), "prices.yml").exists())
             saveResource("prices.yml", false);
         if (!new File(getDataFolder(), "config.yml").exists())
