@@ -1,3 +1,6 @@
+# Note that the default icons are for 1.13. You will have to change certain items appropriately to work with 1.8-1.12
+# Invalid materials will be logged in console
+# Examples are GOLDEN_SWORD -> GOLD_SWORD
 MainPage:
   Size: 27
   Name: '&8&lCategories'

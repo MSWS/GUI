@@ -71,6 +71,7 @@ public class GUIPage implements Listener {
                 continue;
 
             CItem item = new CItem(itemValues);
+
             if (itemValues.containsKey("Functions")) {
                 Map<String, Object> values = Utils.mapValues(itemValues.get("Functions"), true);
                 for (Entry<String, Object> fv : values.entrySet()) {

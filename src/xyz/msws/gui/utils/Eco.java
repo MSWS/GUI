@@ -4,8 +4,6 @@ import org.bukkit.Material;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.Damageable;
-import org.bukkit.inventory.meta.ItemMeta;
 import xyz.msws.gui.GUIPlugin;
 import xyz.msws.gui.guis.CItem;
 
@@ -60,16 +58,11 @@ public class Eco {
 
     public static double getSellPrice(ItemStack item) {
         double price = getPrice(item.getType()) * item.getAmount() * sellPrice;
-        ItemMeta meta = item.getItemMeta();
-        if (!(meta instanceof Damageable))
-            return price;
-
-        Damageable dmg = (Damageable) meta;
         if (item.getType().getMaxDurability() == 0)
             return price;
-        double percent = (double) (item.getType().getMaxDurability() - dmg.getDamage()) / item.getType().getMaxDurability();
+        int dmg = new CItem(item).getDamage();
+        double percent = (double) (item.getType().getMaxDurability() - dmg) / item.getType().getMaxDurability();
         price *= percent;
-
         return price;
     }
 
